@@ -1,0 +1,17 @@
+export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";
+export const LOAD_SHOWS = "LOAD_SHOWS";
+export const LOAD_SHOWS_WITH_VENUES = "LOAD_SHOWS_WITH_VENUES";
+export const LOAD_SINGLES = "LOAD_SINGLES";
+export const LOAD_ALBUMS = "LOAD_ALBUMS";
+export const LOAD_VENUES = "LOAD_VENUES";
+export const ADD_SHOW = "ADD_SHOW";
+export const ADD_SINGLE = "ADD_SINGLE";
+export const ADD_ALBUM = "ADD_ALBUM";
+export const DELETE_SHOW = "DELETE_SHOW"
+export const DELETE_SHOWS_WITH_VENUE = "DELETE_SHOWS_WITH_VENUE";
+export const DELETE_ALBUM = "DELETE_ALBUM";
+export const DELETE_SINGLE = "DELETE_SINGLE";
+export const UPDATE_SHOW = "UPDATE_SHOW";
+export const UPDATE_SINGLE = "UPDATE_SINGLE";
+export const UPDATE_ALBUM = "UPDATE_ALBUM";
