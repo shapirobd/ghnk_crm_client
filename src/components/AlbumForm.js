@@ -14,6 +14,7 @@ import axios from "axios";
 import jQuery from "jquery";
 import { useDispatch } from 'react-redux';
 import { addAlbum } from '../actionCreators/postActionCreators'
+import { API_URL } from "../config";
 
 export default function AlbumForm({ user, newAlbumValues, setNewAlbumValues }) {
 	// const user = useSelector((state) => state.user);
@@ -45,7 +46,7 @@ export default function AlbumForm({ user, newAlbumValues, setNewAlbumValues }) {
 			data.url.length
 		);
 
-		// const resp = await axios.post("http://localhost:5000/albums", {
+		// const resp = await axios.post(API_URL + "/albums", {
 		// 	...data,
 		// 	code,
 		// 	token: user.token,

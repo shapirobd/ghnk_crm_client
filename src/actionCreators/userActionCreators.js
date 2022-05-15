@@ -1,5 +1,6 @@
 import axios from "axios";
 import { LOGIN, LOGOUT } from "../actionTypes";
+import { API_URL } from "../config";
 
 // adds user to database as well as redux state
 // by dispatching action created by registered()
@@ -7,7 +8,7 @@ export const register = (data) => {
 	return async (dispatch) => {
 		try {
 			const resp = await axios.post(
-				`${process.env.REACT_APP_API_URL || "http://localhost:5000"}/register`,
+				`${process.env.REACT_APP_API_URL || API_URL + ""}/register`,
 				data
 			);
 			// const userResp = await axios.get(`${API_URL}/users/${data.username}`);
@@ -38,7 +39,7 @@ export const login = (data) => {
 	return async (dispatch) => {
 		try {
 			const resp = await axios.post(
-				`${process.env.REACT_APP_API_URL || "http://localhost:5000"}/login`,
+				`${process.env.REACT_APP_API_URL || API_URL + ""}/login`,
 				data
 			);
 			const { user, token } = resp.data;
@@ -75,7 +76,7 @@ export const editProfile = (username, data) => {
 	return async (dispatch) => {
 		try {
 			const editResp = await axios.patch(
-				`${process.env.API_URL || "http://localhost:5000"}/users/${username}`,
+				`${process.env.API_URL || API_URL + ""}/users/${username}`,
 				data
 			);
 			dispatch(edittedProfile(editResp.data));

@@ -13,7 +13,8 @@ import {
 import axios from "axios";
 import jQuery from "jquery";
 import { useDispatch } from "react-redux";
-import { addSingle } from '../actionCreators/postActionCreators'
+import { addSingle } from '../actionCreators/postActionCreators';
+import { API_URL } from "../config";
 
 export default function SingleForm({
 	user,
@@ -51,7 +52,7 @@ export default function SingleForm({
 			data.url.indexOf("?")
 		);
 
-		// const resp = await axios.post("http://localhost:5000/singles", {
+		// const resp = await axios.post(API_URL + "/singles", {
 		// 	...data,
 		// 	code,
 		// 	token: user.token,

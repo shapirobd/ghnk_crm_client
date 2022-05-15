@@ -5,11 +5,12 @@ import {
 	DELETE_ALBUM,
 	DELETE_SINGLE,
 } from "../actionTypes";
+import { API_URL } from '../config'
 
 export const deleteAlbum = (user, albumID, setDeletedAlbumID) => {
 	return async (dispatch) => {
 		try {
-			await axios.delete("http://localhost:5000/albums", {
+			await axios.delete(API_URL + "/albums", {
 				token: user.token,
 				data: {
 					albumID
@@ -26,7 +27,7 @@ export const deleteAlbum = (user, albumID, setDeletedAlbumID) => {
 export const deleteShow = (user, showID, setDeletedShowID) => {
 	return async (dispatch) => {
 		try {
-			await axios.delete("http://localhost:5000/shows", {
+			await axios.delete(API_URL + "/shows", {
 				token: user.token,
 				data: {
 					showID,
@@ -45,7 +46,7 @@ export const deleteSingle = (user, singleID, setDeletedSingleID) => {
   console.log("inside delete single")
 	return async (dispatch) => {
 		try {
-			axios.delete("http://localhost:5000/singles", {
+			axios.delete(API_URL + "/singles", {
 				token: user.token,
 				data: {
 					singleID

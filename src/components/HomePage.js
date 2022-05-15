@@ -8,6 +8,7 @@ import {useDispatch, useSelector, shallowEqual} from 'react-redux'
 import { getAlbums, getShowsWithVenues, getShows, getSingles} from "../actionCreators/getActionCreators";
 import { deleteAlbum, deleteShow, deleteSingle} from "../actionCreators/deleteActionCreators";
 import { updateAlbum, updateShow, updateSingle} from "../actionCreators/patchActionCreators";
+import { API_URL } from "../config";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
 	display: "flex",
@@ -51,16 +52,16 @@ const HomePage = ({ user, setPageName }) => {
 	const [deletedShowID, setDeletedShowID] = useState(0);
 
 	// const getAlbums = async () => {
-	// 	const resp = await axios.get("http://localhost:5000/albums");
+	// 	const resp = await axios.get(API_URL + "/albums");
 	// 	setAlbums(resp.data);
 	// };
 	// const getSingles = async () => {
-	// 	const resp = await axios.get("http://localhost:5000/singles");
+	// 	const resp = await axios.get(API_URL + "/singles");
 	// 	setSingles(resp.data);
 	// };
 	// const getShows = async () => {
 	// 	const resp = await axios.get(
-	// 		"http://localhost:5000/shows?getVenueNames=true"
+	// 		API_URL + "/shows?getVenueNames=true"
 	// 	);
 	// 	setShows(resp.data);
 	// };
@@ -99,7 +100,7 @@ const HomePage = ({ user, setPageName }) => {
 	// ##################################
 
 	// const deleteShow = async (showID) => {
-	// 	axios.delete("http://localhost:5000/shows", {
+	// 	axios.delete(API_URL + "/shows", {
 	// 		token: user.token,
 	// 		data: {
 	// 			showID,
@@ -109,7 +110,7 @@ const HomePage = ({ user, setPageName }) => {
 	// };
 
 	// const deleteAlbum = async (albumID) => {
-	// 	axios.delete("http://localhost:5000/albums").send({
+	// 	axios.delete(API_URL + "/albums").send({
 	// 		token: user.token,
 	// 		albumID,
 	// 	});
@@ -117,7 +118,7 @@ const HomePage = ({ user, setPageName }) => {
 	// };
 
 	// const deleteSingle = async (singleID) => {
-	// 	axios.delete("http://localhost:5000/singles").send({
+	// 	axios.delete(API_URL + "/singles").send({
 	// 		token: user.token,
 	// 		singleID,
 	// 	});

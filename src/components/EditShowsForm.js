@@ -19,6 +19,7 @@ import jQuery from "jquery";
 import { useSelector, useDispatch } from "react-redux";
 import { updateShow } from "../actionCreators/patchActionCreators";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config";
 
 const EditShowsForm = ({ venues, venueType, showID }) => {
   const navigate = useNavigate();
@@ -100,7 +101,7 @@ const EditShowsForm = ({ venues, venueType, showID }) => {
 
 	// async function submitShow(data) {
 	// 	console.log(data);
-	// 	const resp = await axios.post("http://localhost:5000/shows", {
+	// 	const resp = await axios.post(API_URL + "/shows", {
 	// 		...data,
 	// 		token: user.token,
 	// 	});

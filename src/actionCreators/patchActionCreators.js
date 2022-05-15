@@ -1,19 +1,20 @@
 import axios from "axios";
 import { UPDATE_SHOW, UPDATE_SINGLE, UPDATE_ALBUM } from "../actionTypes";
+import { API_URL } from "../config";
 
 export const updateShow = (showID, data, user, setSubmitSuccess) => {
 	return async (dispatch) => {
 		try {
 			console.log(data);
-			const resp = await axios.patch("http://localhost:5000/shows?showID=" + showID, {
+			const resp = await axios.patch(API_URL + "/shows?showID=" + showID, {
 				...data,
 				token: user.token,
 			});
 			const shows = await axios.get(
-				"http://localhost:5000/shows"
+				API_URL + "/shows"
 			);
 			const showsWithVenues = await axios.get(
-				"http://localhost:5000/shows?getVenueNames=true"
+				API_URL + "/shows?getVenueNames=true"
 			);
 			console.log("shows: ", shows);
 			console.log("showsWithVenueResp: ", showsWithVenues);
@@ -33,7 +34,7 @@ export const updateAlbum = (albumID, data, code, user, setSubmitSuccess) => {
 	return async (dispatch) => {
 		try {
 			const resp = await axios.patch(
-				"http://localhost:5000/albums?albumID=" + albumID,
+				API_URL + "/albums?albumID=" + albumID,
 				{
 					...data,
 					code,
@@ -41,7 +42,7 @@ export const updateAlbum = (albumID, data, code, user, setSubmitSuccess) => {
 				}
 			);
 
-			const albums = await axios.get("http://localhost:5000/albums");
+			const albums = await axios.get(API_URL + "/albums");
 			setSubmitSuccess(true);
 			dispatch(albumUpdated(albums));
 		} catch (e) {
@@ -54,7 +55,7 @@ export const updateSingle = (singleID, data, code, user, setSubmitSuccess) => {
 		try {
 			console.log("SINGLE DATA: ", data);
 			const resp = await axios.patch(
-				"http://localhost:5000/singles?singleID=" + singleID,
+				API_URL + "/singles?singleID=" + singleID,
 				{
 					...data,
 					code,
@@ -62,7 +63,7 @@ export const updateSingle = (singleID, data, code, user, setSubmitSuccess) => {
 				}
 			);
 
-			const singles = await axios.get("http://localhost:5000/singles");
+			const singles = await axios.get(API_URL + "/singles");
 			setSubmitSuccess(true);
 			dispatch(singleUpdated(singles));
 		} catch (e) {

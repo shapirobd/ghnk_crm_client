@@ -18,6 +18,7 @@ import SelectVenueSection from "./SelectVenueSection";
 import jQuery from "jquery";
 import { useSelector, useDispatch } from "react-redux";
 import { addShow } from '../actionCreators/postActionCreators'
+import { API_URL } from "../config";
 
 export default function ShowsForm({ venues, venueType }) {
 	const user = useSelector((state) => state.user);
@@ -84,7 +85,7 @@ export default function ShowsForm({ venues, venueType }) {
 
 	// async function submitShow(data) {
 	// 	console.log(data);
-	// 	const resp = await axios.post("http://localhost:5000/shows", {
+	// 	const resp = await axios.post(API_URL + "/shows", {
 	// 		...data,
 	// 		token: user.token,
 	// 	});

@@ -5,11 +5,12 @@ import axios from "axios";
 import {
 	ADD_SHOW, ADD_SINGLE, ADD_ALBUM
 } from "../actionTypes";
+import { API_URL } from "../config";
 
 export const addAlbum = (data, code, user, setSubmitSuccess) => {
 	return async (dispatch) => {
 		try {
-			const resp = await axios.post("http://localhost:5000/albums", {
+			const resp = await axios.post(API_URL + "/albums", {
 				...data,
 				code,
 				token: user.token,
@@ -28,7 +29,7 @@ export const addSingle = (data, code, user, setSubmitSuccess) => {
 	return async (dispatch) => {
 		try {
       console.log("SINGLE DATA: ", data)
-			const resp = await axios.post("http://localhost:5000/singles", {
+			const resp = await axios.post(API_URL + "/singles", {
 				...data,
 				code,
 				token: user.token,
@@ -47,11 +48,11 @@ export const addShow = (data, user) => {
 	return async (dispatch) => {
 		try {
 			console.log(data);
-			const resp = await axios.post("http://localhost:5000/shows", {
+			const resp = await axios.post(API_URL + "/shows", {
 				...data,
 				token: user.token,
 			});
-      const showsWithVenueResp = await axios.get("http://localhost:5000/shows?getVenueNames=true");
+      const showsWithVenueResp = await axios.get(API_URL + "/shows?getVenueNames=true");
       const newShow = showsWithVenueResp.data.filter(show => show.id = resp.data.id);
       dispatch(addedShow(resp.data, newShow[0]));
 		} catch (e) {
