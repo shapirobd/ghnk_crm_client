@@ -39,10 +39,11 @@ export const login = (data) => {
 	return async (dispatch) => {
 		try {
 			const resp = await axios.post(
-				`${process.env.REACT_APP_API_URL || API_URL + ""}/login`,
+				`${process.env.REACT_APP_API_URL || API_URL}/login`,
 				data
 			);
 			const { user, token } = resp.data;
+			console.log(user)
 			dispatch(loggedIn(token, user));
 		} catch (e) {
 			console.error(e);

@@ -38,7 +38,7 @@ export const getShows = () => {
 export const getVenues = () => {
   return async (dispatch) => {
     try {
-			const resp = await axios.get(`http://localhost:5000/venues`);
+			const resp = await axios.get(`${API_URL}/venues`);
 	    dispatch(gotVenues(resp.data));
     } catch (e) {
       console.error(e)
