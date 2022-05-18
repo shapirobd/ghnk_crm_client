@@ -8,7 +8,7 @@ export const register = (data) => {
 	return async (dispatch) => {
 		try {
 			const resp = await axios.post(
-				`${process.env.REACT_APP_API_URL || API_URL + ""}/register`,
+				`${API_URL}/register`,
 				data
 			);
 			// const userResp = await axios.get(`${API_URL}/users/${data.username}`);
@@ -39,7 +39,7 @@ export const login = (data) => {
 	return async (dispatch) => {
 		try {
 			const resp = await axios.post(
-				`${process.env.REACT_APP_API_URL || API_URL}/login`,
+				`${API_URL}/login`,
 				data
 			);
 			const { user, token } = resp.data;

@@ -1,8 +1,9 @@
 import React from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation} from "react-router-dom";
 import HomePage from "./components/HomePage.js";
 import ShowsPage from "./components/ShowsPage.js";
 import MusicPage from "./components/MusicPage.js";
+import RegisterPage from "./components/RegisterPage.js";
 // import ScrollToTop from "./ScrollToTop";
 
 const useQuery = () => {
@@ -31,12 +32,12 @@ const Router = ({ mobile, user, venues, pageName, setPageName }) => {
 			<Route
 				exact
 				path="/"
-				element={
-					<HomePage
-						user={user}
-						setPageName={setPageName}
-					/>
-				}
+				element={<HomePage user={user} setPageName={setPageName} />}
+			/>
+			<Route
+				exact
+				path="/register"
+				element={user ? <Navigate to="/" /> : <RegisterPage />}
 			/>
 			<Route
 				exact
@@ -46,7 +47,7 @@ const Router = ({ mobile, user, venues, pageName, setPageName }) => {
 			<Route
 				exact
 				path="/music"
-				element={<MusicPage albumID={albumID} singleID={singleID}/>}
+				element={<MusicPage albumID={albumID} singleID={singleID} />}
 			/>
 		</Routes>
 	);

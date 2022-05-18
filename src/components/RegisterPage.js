@@ -7,20 +7,20 @@ import {
 	InputAdornment,
 	IconButton,
 	Button,
-	Typography
+  Typography
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 // import { useStyles } from "./ShowsFormStyles";
 import Theme from "./ShowsFormTheme";
-import { login } from "../actionCreators/userActionCreators";
+import { register } from "../actionCreators/userActionCreators";
 // import { getVenueNames } from "../actionCreators/showsActionCreators";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom'
 
-export default function LoginPage() {
-	const navigate = useNavigate();
+export default function RegisterPage() {
+  const navigate = useNavigate();
 	const user = useSelector((state) => state.user);
 	const dispatch = useDispatch();
 	const theme = createTheme(Theme);
@@ -29,18 +29,21 @@ export default function LoginPage() {
 	const [values, setValues] = useState({
 		username: "",
 		password: "",
+		first_name: "",
+		last_name: "",
 	});
 	const [invalidLogin, setInvalidLogin] = useState(undefined);
 
 	const handleSubmit = (e) => {
 		console.log(values);
 		e.preventDefault();
-		dispatch(login(values));
+		dispatch(register(values));
 		setTimeout(() => {
 			if (!user) {
 				setInvalidLogin(true);
 			} else {
 				setInvalidLogin(false);
+        navigate('/')
 			}
 		}, 1000);
 	};
@@ -59,11 +62,6 @@ export default function LoginPage() {
 	const handleMouseDownPassword = (event) => {
 		event.preventDefault();
 	};
-
-	const handleRegisterButton = (event) => {
-		event.preventDefault();
-		navigate('/register')
-	}
 
 	// useEffect(() => {
 	// 	const getVenueNames = async () => {
@@ -88,9 +86,31 @@ export default function LoginPage() {
 			>
 				<div>
 					<Typography variant="h3" sx={{ marginBottom: "20px" }}>
-						Login
+						Register
 					</Typography>
 					<form onSubmit={(e) => handleSubmit(e)}>
+						<FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+							<InputLabel htmlFor="outlined-adornment-password">
+								First Name
+							</InputLabel>
+							<OutlinedInput
+								id="outlined-adornment-password"
+								value={values.first_name}
+								onChange={handleChange("first_name")}
+								label="First Name"
+							/>
+						</FormControl>
+						<FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+							<InputLabel htmlFor="outlined-adornment-password">
+								Last Name
+							</InputLabel>
+							<OutlinedInput
+								id="outlined-adornment-password"
+								value={values.last_name}
+								onChange={handleChange("last_name")}
+								label="Last Name"
+							/>
+						</FormControl>
 						<FormControl fullWidth sx={{ m: 1 }} variant="outlined">
 							<InputLabel htmlFor="outlined-adornment-password">
 								Username
@@ -130,26 +150,10 @@ export default function LoginPage() {
 							<Button
 								variant="contained"
 								type="submit"
-								sx={{
-									backgroundColor: "#77B4F7",
-									"&:hover": { backgroundColor: "#87C4F7" },
-								}}
+								sx={{ backgroundColor: "#87C4F7" }}
 								// onClick={(e) => handleSubmit(e)}
 							>
-								<b>Login</b>
-							</Button>
-						</FormControl>
-						<FormControl fullWidth sx={{ m: 1, width: "100%" }}>
-							<Button
-								variant="contained"
-								type="submit"
-								sx={{
-									backgroundColor: "#76CDA3",
-									"&:hover": { backgroundColor: "#A1DDAA" },
-								}}
-								onClick={(e) => handleRegisterButton(e)}
-							>
-								<b>Register</b>
+								<b>Submit</b>
 							</Button>
 						</FormControl>
 					</form>

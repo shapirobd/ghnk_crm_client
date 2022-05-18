@@ -2,7 +2,9 @@ import MiniDrawer from "./components/MiniDrawer";
 import "./App.css";
 import { useSelector } from "react-redux";
 import LoginPage from "./components/LoginPage";
+import RegisterPage from "./components/RegisterPage";
 import React, { useState } from "react";
+import LoginRouter from './LoginRouter'
 
 function App() {
 	const user = useSelector((state) => state.user);
@@ -17,9 +19,14 @@ function App() {
 				}
 			>
 				{user ? (
-				<MiniDrawer pageName={pageName} setPageName={setPageName} user={user} />
+					<MiniDrawer
+						pageName={pageName}
+						setPageName={setPageName}
+						user={user}
+					/>
 				) : (
-				<LoginPage />)}
+					<LoginRouter />
+				)}
 			</header>
 		</div>
 	);
