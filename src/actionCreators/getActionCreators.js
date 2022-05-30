@@ -52,6 +52,7 @@ export const getShowsWithVenues = () => {
 	    const resp = await axios.get(
 	    	API_URL + "/shows?getVenueNames=true"
 	    );
+			console.log(resp.data)
 	    dispatch(gotShowsWithVenues(resp.data));
     } catch (e) {
       console.error(e)
@@ -96,10 +97,14 @@ const gotVenues = (venues) => {
 };
 
 const gotShowsWithVenues = (showsWithVenues) => {
+	const showsWithReadableDates = showsWithVenues.map(s => {
+		console.log({ ...s, date: s.date.substring(0, 10) });
+		return {...s, date: s.date.substring(0, 10)}
+	})
 	return {
 		type: LOAD_SHOWS_WITH_VENUES,
 		payload: {
-			showsWithVenues,
+			showsWithVenues: showsWithReadableDates,
 		},
 	};
 };
