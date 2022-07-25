@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {
 	Table,
 	TableBody,
@@ -11,7 +11,8 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import {useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux';
+import SimpleDialog from './SimpleDialog';
 
 const BasicTable = ({
 	cols,
@@ -30,8 +31,29 @@ const BasicTable = ({
 		console.log("*** SHOWS DATA *** ", data);
 	}
 
+	const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+	const [deletedRowId, setDeletedRowId] = useState(-1);
+
+	function handleShowDelete(rowId) {
+		setDeletedRowId(rowId)
+	}
+
+	useEffect(() => {
+		if (deletedRowId > -1) {
+			setOpenDeleteDialog(true);
+		}
+	}, [deletedRowId])
+
 	return (
 		<TableContainer component={Paper}>
+			<SimpleDialog
+				open={openDeleteDialog}
+				setOpen={setOpenDeleteDialog}
+				deleteFunction={deleteFunction}
+				user={user}
+				rowId={deletedRowId}
+				deletedIdSetter={deletedIdSetter}
+			/>
 			<Table sx={{ minWidth: 650 }} aria-label="simple table">
 				<TableHead>
 					<TableRow>
@@ -60,7 +82,11 @@ const BasicTable = ({
 								<IconButton
 									onClick={() => {
 										console.log(row.id);
-										dispatch(deleteFunction(user, row.id, deletedIdSetter));
+										if (category === "shows") {
+											handleShowDelete(row.id);
+										} else {
+											dispatch(deleteFunction(user, row.id, deletedIdSetter));
+										}
 									}}
 								>
 									<DeleteIcon sx={{ color: "red" }} />

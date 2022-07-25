@@ -24,13 +24,14 @@ export const deleteAlbum = (user, albumID, setDeletedAlbumID) => {
 	};
 };
 
-export const deleteShow = (user, showID, setDeletedShowID) => {
+export const deleteShow = (user, showID, setDeletedShowID, setPreviousShow = false) => {
 	return async (dispatch) => {
 		try {
 			await axios.delete(API_URL + "/shows", {
 				token: user.token,
 				data: {
 					showID,
+					setPreviousShow
 				},
 			});
 			dispatch(deletedShow(showID));
