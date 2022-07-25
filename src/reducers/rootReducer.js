@@ -62,7 +62,7 @@ const rootReducer = (state = INITIAL_STATE, action) => {
 			console.log("SHOW WITH VENUE FOUND: ", showWithVenue);
 			return {
 				...state,
-				shows: [...state.shows, show],
+				shows: [...state.shows.shows, show],
 				showWithVenue: [...state.showsWithVenues, showWithVenue],
 			};
 		}
@@ -85,10 +85,10 @@ const rootReducer = (state = INITIAL_STATE, action) => {
 		case "DELETE_SHOW": {
 			const { showID } = action.payload;
 			console.log("SHOW DELETED: ", showID); 
-			console.log('rootReducer - shows = ', state.shows);
+			console.log('rootReducer - shows = ', state.shows.shows);
 			return {
 				...state,
-				shows: state.shows.filter((show) => show.id !== showID),
+				shows: state.shows.shows.filter((show) => show.id !== showID),
 				showsWithVenues: state.showsWithVenues.filter(
 					(show) => show.id !== showID
 				),
