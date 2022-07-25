@@ -84,7 +84,7 @@ const rootReducer = (state = INITIAL_STATE, action) => {
 		}
 		case "DELETE_SHOW": {
 			const { showID } = action.payload;
-			console.log("SHOW DELETED: ", showID);
+			console.log("SHOW DELETED: ", showID); 
 			console.log('rootReducer - shows = ', state.shows);
 			return {
 				...state,
