@@ -53,7 +53,7 @@ export const addShow = (data, user) => {
 				token: user.token,
 			});
       const showsWithVenueResp = await axios.get(API_URL + "/shows?getVenueNames=true");
-      const newShow = showsWithVenueResp.data.filter(show => show.id = resp.data.id);
+      const newShow = showsWithVenueResp.data.shows.filter(show => show.id = resp.data.id);
       dispatch(addedShow(resp.data, newShow[0]));
 		} catch (e) {
 			console.error(e);

@@ -97,7 +97,7 @@ const gotVenues = (venues) => {
 };
 
 const gotShowsWithVenues = (showsWithVenues) => {
-	const showsWithReadableDates = showsWithVenues.map(s => {
+	const showsWithReadableDates = showsWithVenues.shows.map(s => {
 		console.log({ ...s, date: s.date.substring(0, 10) });
 		return {...s, date: s.date.substring(0, 10)}
 	})
