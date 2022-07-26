@@ -28,6 +28,8 @@ const EditShowsForm = ({ venues, venueType, showID }) => {
 	const user = useSelector((state) => state.user);
 	const dispatch = useDispatch();
 
+	console.log('shows = ', shows)
+
   const initialShowData = shows.filter(
 		(show) => show.id == showID
 	)[0];
