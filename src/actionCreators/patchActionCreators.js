@@ -77,7 +77,7 @@ const showUpdated = (shows, showsWithVenues) => {
 		type: UPDATE_SHOW,
 		payload: {
 			shows: shows.shows,
-			showsWithVenues,
+			showsWithVenues: showsWithVenues.shows,
 		},
 	};
 };
