@@ -14,6 +14,19 @@ import EditIcon from "@mui/icons-material/Edit";
 import {useDispatch} from 'react-redux';
 import SimpleDialog from './SimpleDialog';
 
+function formatTime(time) {
+	let am_pm = "AM";
+	let hour = parseInt(time.substring(0, 2));
+	if (hour >= 12) {
+		am_pm = "PM";
+		if (hour > 12) {
+			hour = hour - 12;
+		}
+	}
+	let formattedTime = hour + time.substring(2, 5) + " " + am_pm;
+	return formattedTime;
+}
+
 const BasicTable = ({
 	cols,
 	data,
@@ -29,6 +42,11 @@ const BasicTable = ({
 
 	if (category == "shows") {
 		console.log("*** SHOWS DATA *** ", data);
+		data.map(row => {
+			if (row["time"]) {
+				formatTime(row["time"]);
+			}
+		});
 	}
 
 	const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
