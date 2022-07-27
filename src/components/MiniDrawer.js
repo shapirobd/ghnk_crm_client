@@ -160,7 +160,7 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 					</Typography>
 				</Toolbar>
 			</AppBar>
-			<Drawer variant="permanent" open={open} sx={{ display: window.innerWidth < 760 ? "none" : "block" }}>
+			<Drawer variant="permanent" open={open} sx={{ display: window.innerWidth < 760 && !open ? "none" : "block" }}>
 				<DrawerHeader>
 					<IconButton onClick={handleDrawerClose}>
 						{theme.direction === "rtl" ? (
