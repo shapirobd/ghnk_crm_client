@@ -51,9 +51,13 @@ const BasicTable = ({
 	if (category == "shows") {
 		console.log("*** SHOWS DATA *** ", data);
 		data.map(row => {
-			row["date"] = formatDate(row["date"]);
+			if (row["date"].includes("-")) {
+				row["date"] = formatDate(row["date"]);
+			}
 			if (row["time"]) {
-				row["time"] = formatTime(row["time"]);
+				if (!(row["time"].includes("AM") || row["time"].includes("PM"))) {
+					row["time"] = formatTime(row["time"]);
+				}
 			}
 		});
 	}
