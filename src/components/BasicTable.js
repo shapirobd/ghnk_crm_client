@@ -27,6 +27,12 @@ function formatTime(time) {
 	return formattedTime;
 }
 
+function formatDate(date) {
+	let dateArr = date.split('-');
+	let formattedDate = dateArr[1] + "/" + dateArr[2] + "/" + dateArr[0];
+	return formattedDate;
+}
+
 const BasicTable = ({
 	cols,
 	data,
@@ -43,6 +49,7 @@ const BasicTable = ({
 	if (category == "shows") {
 		console.log("*** SHOWS DATA *** ", data);
 		data.map(row => {
+			row["date"] = formatDate(row["date"]);
 			if (row["time"]) {
 				row["time"] = formatTime(row["time"]);
 			}
