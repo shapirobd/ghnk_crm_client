@@ -33,7 +33,7 @@ const MusicPage = ({albumID, singleID}) => {
 		url: "",
 	});
 	return (
-		<div style={{ width: "50%" }}>
+		<div style={{ width: window.innerWidth < 760 ? "100%" : "50%" }}>
 			<DrawerHeader />
 			<Typography variant="h3" sx={{ marginBottom: "30px" }}>
 				{albumID && "Edit Album"}
