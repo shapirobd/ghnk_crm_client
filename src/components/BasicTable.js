@@ -102,10 +102,14 @@ const BasicTable = ({
 			/>
 			<Table sx={{ minWidth: 650 }} aria-label="simple table">
 				<TableHead>
-					<TableRow>
+					<TableRow sx={{ backgroundColor: "#1976D2" }}>
 						{cols.map((col) => (
-							<TableCell key={col} align="left">
-								{col}
+							<TableCell
+								key={col}
+								align="left"
+								sx={{ color: "white" }}
+							>
+								<b>{col}</b>
 							</TableCell>
 						))}
 						<TableCell align="left" id="trash-column"></TableCell>
@@ -125,14 +129,11 @@ const BasicTable = ({
 										<a href={row[colMap[col]]} className={classes.url}>
 											{row[colMap[col]]}
 										</a>
+									) : boldTagColumns.includes(colMap[col]) ? (
+										<b>{row[colMap[col]]}</b>
 									) : (
-										boldTagColumns.includes(colMap[col]) ? (
-											<b>{row[colMap[col]]}</b>
-										) : (
-											row[colMap[col]]
-										)
-									)
-								}
+										row[colMap[col]]
+									)}
 								</TableCell>
 							))}
 							<TableCell align="left">

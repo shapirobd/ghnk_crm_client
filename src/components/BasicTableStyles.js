@@ -2,12 +2,16 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles(() => ({
 	url: {
-    transitionDuration: "0.2s",
+		transitionDuration: "0.2s",
 		textDecoration: "none",
-    color: "#00F",
-    "&:hover": {
-      transitionDuration: "0.2s",
-      color: "#0B5"
-    }
+		color: "#00F",
+		"&:hover": {
+			transitionDuration: "0.2s",
+			color: "#0B5",
+		},
+	},
+	tableHeader: {
+		backgroundColor: "#1976D2",
+    color: "white"
 	},
 }));
