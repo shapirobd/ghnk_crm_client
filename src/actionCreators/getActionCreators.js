@@ -82,7 +82,7 @@ const gotShows = (shows) => {
 	return {
 		type: LOAD_SHOWS,
 		payload: {
-			shows,
+			shows: shows.shows,
 		},
 	};
 };

@@ -24,7 +24,7 @@ import { API_URL } from "../config";
 const EditShowsForm = ({ venues, venueType, showID }) => {
   const navigate = useNavigate();
   const showsWithVenues = useSelector((state) => state.showsWithVenues);
-  const shows = useSelector((state) => state.shows.shows);
+  const shows = useSelector((state) => state.shows);
 	const user = useSelector((state) => state.user);
 	const dispatch = useDispatch();
 

@@ -233,7 +233,7 @@ const HomePage = ({ user, setPageName }) => {
 			{currentTable === "Shows" && (
 				<BasicTable
 					cols={showCols}
-					data={shows.shows}
+					data={shows}
 					colMap={colMap}
 					deleteFunction={deleteShow}
 					editFunction={editShow}

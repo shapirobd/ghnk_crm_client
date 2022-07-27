@@ -74,7 +74,7 @@ const addedShow = (show, showWithVenue) => {
   return {
     type: ADD_SHOW,
     payload: {
-      show,
+      show: show.show,
       showWithVenue
     }
   }
