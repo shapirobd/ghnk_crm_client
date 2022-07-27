@@ -33,6 +33,8 @@ function formatDate(date) {
 	return formattedDate;
 }
 
+const anchorTagColumns = ["ticket_link", "url"];
+
 const BasicTable = ({
 	cols,
 	data,
@@ -100,7 +102,7 @@ const BasicTable = ({
 						>
 							{cols.map((col) => (
 								<TableCell key={category + "_" + col} align="left">
-									{colMap[col] === "ticket_link" ? (
+									{anchorTagColumns.includes(colMap[col]) ? (
 										<a href={row[colMap[col]]}>{row[colMap[col]]}</a>
 									) : (
 										row[colMap[col]]
