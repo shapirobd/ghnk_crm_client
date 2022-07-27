@@ -56,6 +56,7 @@ function formatShowData(data) {
 }
 
 const anchorTagColumns = ["ticket_link", "url"];
+const boldTagColumns = ["venue_name", "name"];
 
 const BasicTable = ({
 	cols,
@@ -125,7 +126,7 @@ const BasicTable = ({
 											{row[colMap[col]]}
 										</a>
 									) : (
-										colMap[col] === "venue_name" ? (
+										boldTagColumns.includes(colMap[col]) ? (
 											<b>{row[colMap[col]]}</b>
 										) : (
 											row[colMap[col]]
