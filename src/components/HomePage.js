@@ -160,7 +160,7 @@ const HomePage = ({ user, setPageName }) => {
 				flexDirection: "column",
 				justifyContent: "left",
 				alignItems: "center",
-				marginTop: "8%",
+				marginTop: window.innerWidth < 760 ? "25%" : "8%",
 			}}
 		>
 			<List
