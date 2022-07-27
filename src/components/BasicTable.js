@@ -44,7 +44,7 @@ const BasicTable = ({
 		console.log("*** SHOWS DATA *** ", data);
 		data.map(row => {
 			if (row["time"]) {
-				formatTime(row["time"]);
+				row["time"] = formatTime(row["time"]);
 			}
 		});
 	}
