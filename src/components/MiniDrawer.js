@@ -181,6 +181,9 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 								px: 2.5,
 							}}
 							onClick={() => {
+								if (window.innerWidth < 760) {
+									handleDrawerClose();
+								}
 								setPageName(text); 
 								navigate(pathMap[text]);
 							}}
