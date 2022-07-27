@@ -21,10 +21,10 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 const ShowsPage = ({ venues, showID }) => {
 	const [venueType, setVenueType] = useState("Select Venue");
 	return (
-		<div style={{ width: "50%" }}>
+		<div style={{ width: window.innerWidth < 760 ? "100%" : "50%" }}>
 			<DrawerHeader />
 			<Typography variant="h3" sx={{ marginBottom: "30px" }}>
-				{showID ? "Edit Show" : "Add Show" }
+				{showID ? "Edit Show" : "Add Show"}
 			</Typography>
 			<div
 				style={{
@@ -84,7 +84,15 @@ const ShowsPage = ({ venues, showID }) => {
 						Create New Venue
 					</ListItem>
 				</List>
-				{showID ? <EditShowsForm venues={venues} venueType={venueType} showID={showID}/> : <ShowsForm venues={venues} venueType={venueType} />}
+				{showID ? (
+					<EditShowsForm
+						venues={venues}
+						venueType={venueType}
+						showID={showID}
+					/>
+				) : (
+					<ShowsForm venues={venues} venueType={venueType} />
+				)}
 			</div>
 		</div>
 	);
