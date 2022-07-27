@@ -33,6 +33,19 @@ function formatDate(date) {
 	return formattedDate;
 }
 
+function formatShowData(data) {
+	data.map((row) => {
+		if (row["date"].includes("-")) {
+			row["date"] = formatDate(row["date"]);
+		}
+		if (row["time"]) {
+			if (!(row["time"].includes("AM") || row["time"].includes("PM"))) {
+				row["time"] = formatTime(row["time"]);
+			}
+		}
+	});
+}
+
 const anchorTagColumns = ["ticket_link", "url"];
 
 const BasicTable = ({
@@ -50,16 +63,7 @@ const BasicTable = ({
 
 	if (category == "shows") {
 		console.log("*** SHOWS DATA *** ", data);
-		data.map(row => {
-			if (row["date"].includes("-")) {
-				row["date"] = formatDate(row["date"]);
-			}
-			if (row["time"]) {
-				if (!(row["time"].includes("AM") || row["time"].includes("PM"))) {
-					row["time"] = formatTime(row["time"]);
-				}
-			}
-		});
+		formatShowData(data);
 	}
 
 	const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
