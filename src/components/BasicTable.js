@@ -34,6 +34,11 @@ function formatDate(date) {
 	return formattedDate;
 }
 
+function formatSoloShow(isSolo) {
+	let formattedSoloShow = parseInt(isSolo) === 1 ? "Yes" : "No"
+	return formattedSoloShow;
+}
+
 function formatShowData(data) {
 	data.map((row) => {
 		if (row["date"].includes("-")) {
@@ -43,6 +48,9 @@ function formatShowData(data) {
 			if (!(row["time"].includes("AM") || row["time"].includes("PM"))) {
 				row["time"] = formatTime(row["time"]);
 			}
+		}
+		if (!(row["is_solo"].includes("Yes") || row["is_solo"].includes("No"))) {
+			row["is_solo"] = formatSoloShow(row["is_solo"])
 		}
 	});
 }
