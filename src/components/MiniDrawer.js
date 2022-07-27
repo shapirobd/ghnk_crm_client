@@ -231,7 +231,7 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 				sx={{
 					flexGrow: 1,
 					p: 3,
-					width: "50%",
+					width: window.innerWidth < 760 ? "100%" : "50%",
 					display: "flex",
 					justifyContent: "center",
 					alignItems: pageName === "Home" ? "start" : "center",
