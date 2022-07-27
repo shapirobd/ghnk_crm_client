@@ -49,7 +49,7 @@ function formatShowData(data) {
 				row["time"] = formatTime(row["time"]);
 			}
 		}
-		if (!(row["is_solo"].includes("Yes") || row["is_solo"].includes("No"))) {
+		if (!(row["is_solo"].toString().includes("Yes") || row["is_solo"].toString().includes("No"))) {
 			row["is_solo"] = formatSoloShow(row["is_solo"])
 		}
 	});
