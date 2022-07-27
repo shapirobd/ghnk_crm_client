@@ -100,7 +100,11 @@ const BasicTable = ({
 						>
 							{cols.map((col) => (
 								<TableCell key={category + "_" + col} align="left">
-									{row[colMap[col]]}
+									{colMap[col] === "ticket_link" ? (
+										<a href={row[colMap[col]]}>{row[colMap[col]]}</a>
+									) : (
+										row[colMap[col]]
+									)}
 								</TableCell>
 							))}
 							<TableCell align="left">
