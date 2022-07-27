@@ -13,6 +13,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import {useDispatch} from 'react-redux';
 import SimpleDialog from './SimpleDialog';
+import {useStyles} from './BasicTableStyles';
 
 function formatTime(time) {
 	let am_pm = "AM";
@@ -58,6 +59,7 @@ const BasicTable = ({
 	user,
 	deletedIdSetter,
 }) => {
+	const classes = useStyles();
 	const dispatch = useDispatch();
 	console.log("rednering BasicTable");
 
@@ -111,7 +113,7 @@ const BasicTable = ({
 							{cols.map((col) => (
 								<TableCell key={category + "_" + col} align="left">
 									{anchorTagColumns.includes(colMap[col]) ? (
-										<a href={row[colMap[col]]}>{row[colMap[col]]}</a>
+										<a href={row[colMap[col]]} className={classes.url}>{row[colMap[col]]}</a>
 									) : (
 										row[colMap[col]]
 									)}
