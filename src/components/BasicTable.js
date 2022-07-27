@@ -121,10 +121,17 @@ const BasicTable = ({
 							{cols.map((col) => (
 								<TableCell key={category + "_" + col} align="left">
 									{anchorTagColumns.includes(colMap[col]) ? (
-										<a href={row[colMap[col]]} className={classes.url}>{row[colMap[col]]}</a>
+										<a href={row[colMap[col]]} className={classes.url}>
+											{row[colMap[col]]}
+										</a>
 									) : (
-										row[colMap[col]]
-									)}
+										colMap[col] === "venue_name" ? (
+											<b>{row[colMap[col]]}</b>
+										) : (
+											row[colMap[col]]
+										)
+									)
+								}
 								</TableCell>
 							))}
 							<TableCell align="left">
