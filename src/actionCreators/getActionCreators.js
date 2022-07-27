@@ -53,7 +53,7 @@ export const getShowsWithVenues = () => {
 	    	API_URL + "/shows?getVenueNames=true"
 	    );
 			console.log(resp.data)
-	    dispatch(gotShowsWithVenues(resp.data));
+	    dispatch(gotShowsWithVenues(resp.data.shows));
     } catch (e) {
       console.error(e)
     }
