@@ -91,7 +91,7 @@ export default function LoginPage() {
 				}}
 			>
 				<div style={{ width: "100%" }}>
-					<img src={logo} className={classes.logo}/>
+					<img src={logo} className={window.innerWidth < 760 ? classes.logoMobile : classes.logo}/>
 					{/* <Typography variant="h3" sx={{ marginBottom: "20px" }}>
 						Login
 					</Typography> */}
