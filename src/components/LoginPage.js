@@ -84,9 +84,10 @@ export default function LoginPage() {
 				sx={{
 					display: "flex",
 					flexWrap: "wrap",
+					width: window.innerWidth < 760 ? "90%" : "50%"
 				}}
 			>
-				<div>
+				<div style={{ width: "100%" }}>
 					<Typography variant="h3" sx={{ marginBottom: "20px" }}>
 						Login
 					</Typography>
