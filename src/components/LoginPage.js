@@ -18,8 +18,11 @@ import { login } from "../actionCreators/userActionCreators";
 // import { getVenueNames } from "../actionCreators/showsActionCreators";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom'
+import {logo} from '../images/logo_vector.png'
+import {useStyles} from './LoginPageStyles';
 
 export default function LoginPage() {
+	const classes = useStyles();
 	const navigate = useNavigate();
 	const user = useSelector((state) => state.user);
 	const dispatch = useDispatch();
@@ -88,6 +91,7 @@ export default function LoginPage() {
 				}}
 			>
 				<div style={{ width: "100%" }}>
+					<img src={logo} className={classes.logo}/>
 					<Typography variant="h3" sx={{ marginBottom: "20px" }}>
 						Login
 					</Typography>
