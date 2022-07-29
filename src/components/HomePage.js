@@ -169,15 +169,16 @@ const HomePage = ({ user, setPageName }) => {
 				flexDirection: "column",
 				justifyContent: "left",
 				alignItems: "center",
-				marginTop: window.innerWidth < 760 ? "25%" : "8%",
+				marginTop: window.innerWidth < 760 ? "25%" : "13%",
 			}}
 		>
-			<Typography sx={{ marginBottom: "5%"}}>
+			<Typography sx={{ marginBottom: window.innerWidth < 760 ? "5%" : '0%'}}>
 				<a
 					href={
 						"https://www.greylanhallandthenastykings.com/" +
 						pageUrlMap[currentTable]
 					}
+					target="_blank"
 					className={classes.url}
 				>
 					Visit the {pageUrlMap[currentTable]} page
