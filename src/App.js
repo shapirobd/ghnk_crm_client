@@ -15,7 +15,7 @@ function App() {
 		<div className="App">
 			<header
 				className={
-					pageName === "Home" && user ? "App-header-align-top" : "App-header"
+					(pageName === "Home" || pageName === "Shows") && user ? "App-header-align-top" : "App-header"
 				}
 				style={{ height: window.innerHeight }}
 			>
