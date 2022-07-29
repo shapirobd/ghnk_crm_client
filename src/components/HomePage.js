@@ -172,7 +172,7 @@ const HomePage = ({ user, setPageName }) => {
 				marginTop: window.innerWidth < 760 ? "25%" : "8%",
 			}}
 		>
-			<Typography variant="h4">
+			<Typography variant="h4" sx={{ marginBottom: "5%"}}>
 				<a
 					href={
 						"https://www.greylanhallandthenastykings.com/" +

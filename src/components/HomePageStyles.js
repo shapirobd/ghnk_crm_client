@@ -6,11 +6,12 @@ export const useStyles = makeStyles(() => ({
 		transitionDuration: "0.2s",
 		textDecoration: "none",
 		color: "white",
-		backgroundColor: "#0C0",
+		backgroundColor: "#3B3",
     padding: "15px 30px",
 		"&:hover": {
 			transitionDuration: "0.2s",
-			backgroundColor: "#3F3",
+			backgroundColor: "#5C5",
 		},
+    borderRadius: "5px"
 	},
 }));
