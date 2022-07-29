@@ -34,6 +34,12 @@ const colMap = {
 	"Solo Show": "is_solo",
 };
 
+const pageUrlMap = {
+	"Shows": "shows",
+	"Albums": "music",
+	"Singles": "music",
+}
+
 const HomePage = ({ user, setPageName }) => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch()
@@ -163,6 +169,16 @@ const HomePage = ({ user, setPageName }) => {
 				marginTop: window.innerWidth < 760 ? "25%" : "8%",
 			}}
 		>
+			<Typography variant="h3">
+				<a
+					href={
+						"https://www.greylanhallandthenastykings.com/" +
+						pageUrlMap[currentTable]
+					}
+				>
+					Visit the {pageUrlMap[currentTable]} page
+				</a>
+			</Typography>
 			<List
 				sx={{
 					display: "flex",
