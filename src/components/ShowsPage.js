@@ -72,16 +72,16 @@ const ShowsPage = ({ venues, showID }) => {
 					/>
 					<ListItem
 						button
-						onClick={() => setVenueType("Create New Venue")}
+						onClick={() => setVenueType("Create Venue")}
 						sx={{
 							display: "flex",
 							justifyContent: "center",
 							backgroundColor:
-								venueType === "Create New Venue" ? "#eee" : "white",
+								venueType === "Create Venue" ? "#eee" : "white",
 							fontSize: "18px",
 						}}
 					>
-						Create New Venue
+						Create Venue
 					</ListItem>
 				</List>
 				{showID ? (

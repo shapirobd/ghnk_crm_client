@@ -91,7 +91,7 @@ const EditShowsForm = ({ venues, venueType, showID }) => {
 		const emptyFields = [];
 		if (showValues.date === "") emptyFields.push("date");
 		if (showValues.time === "") emptyFields.push("time");
-		if (venueType === "Create New Venue") {
+		if (venueType === "Create Venue") {
 			for (let key in newVenueValues) {
 				if (newVenueValues[key] === "") emptyFields.push(key);
 			}
@@ -116,7 +116,7 @@ const EditShowsForm = ({ venues, venueType, showID }) => {
 
 		if (!missingFieldsFound.length) {
 			const data = { ...showValues };
-			if (venueType === "Create New Venue") {
+			if (venueType === "Create Venue") {
 				data["newVenue"] = newVenueValues;
 			}
       console.log("DATA: ", data)

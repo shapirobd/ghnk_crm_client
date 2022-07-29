@@ -73,7 +73,7 @@ export default function ShowsForm({ venues, venueType }) {
 		const emptyFields = [];
 		if (newShowValues.date === "") emptyFields.push("date");
 		if (newShowValues.time === "") emptyFields.push("time");
-		if (venueType === "Create New Venue") {
+		if (venueType === "Create Venue") {
 			for (let key in newVenueValues) {
 				if (newVenueValues[key] === "") emptyFields.push(key);
 			}
@@ -98,7 +98,7 @@ export default function ShowsForm({ venues, venueType }) {
 
 		if (!missingFieldsFound.length) {
 			const data = { ...newShowValues };
-			if (venueType === "Create New Venue") {
+			if (venueType === "Create Venue") {
 				data["newVenue"] = newVenueValues;
 			}
 			dispatch(addShow(data, user));
