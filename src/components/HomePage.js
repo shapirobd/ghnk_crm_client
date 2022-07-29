@@ -9,6 +9,7 @@ import { getAlbums, getShowsWithVenues, getShows, getSingles} from "../actionCre
 import { deleteAlbum, deleteShow, deleteSingle} from "../actionCreators/deleteActionCreators";
 import { updateAlbum, updateShow, updateSingle} from "../actionCreators/patchActionCreators";
 import { API_URL } from "../config";
+import { useStyles } from './HomePageStyles';
 
 const DrawerHeader = styled("div")(({ theme }) => ({
 	display: "flex",
@@ -43,6 +44,8 @@ const pageUrlMap = {
 const HomePage = ({ user, setPageName }) => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch()
+
+	const classes = useStyles();
 
 	const [currentTable, setCurrentTable] = useState("Shows");
 	// const [albums, setAlbums] = useState([]);
@@ -169,12 +172,13 @@ const HomePage = ({ user, setPageName }) => {
 				marginTop: window.innerWidth < 760 ? "25%" : "8%",
 			}}
 		>
-			<Typography variant="h3">
+			<Typography variant="h4">
 				<a
 					href={
 						"https://www.greylanhallandthenastykings.com/" +
 						pageUrlMap[currentTable]
 					}
+					className={classes.url}
 				>
 					Visit the {pageUrlMap[currentTable]} page
 				</a>
