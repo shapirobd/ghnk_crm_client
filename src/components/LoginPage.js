@@ -134,7 +134,8 @@ export default function LoginPage() {
 								sx={{
 									backgroundColor: "#1876D1",
 									boxShadow: "none",
-									"&:hover": { backgroundColor: "#3B87F3" },
+									"&:hover": { backgroundColor: "#3B87F3", boxShadow: "none" },
+									"&:active": { boxShadow: "none" },
 								}}
 								// onClick={(e) => handleSubmit(e)}
 							>
@@ -148,7 +149,8 @@ export default function LoginPage() {
 								sx={{
 									backgroundColor: "#3B3",
 									boxShadow: "none",
-									"&:hover": { backgroundColor: "#5C5" },
+									"&:hover": { backgroundColor: "#5C5", boxShadow: "none" },
+									"&:active": { boxShadow: "none" },
 								}}
 								onClick={(e) => handleRegisterButton(e)}
 							>
