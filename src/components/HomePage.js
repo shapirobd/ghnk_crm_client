@@ -169,7 +169,7 @@ const HomePage = ({ user, setPageName }) => {
 				flexDirection: "column",
 				justifyContent: "left",
 				alignItems: "center",
-				marginTop: window.innerWidth < 760 ? "25%" : "13%",
+				marginTop: window.innerWidth < 760 ? "25%" : "8%",
 			}}
 		>
 			<Typography sx={{ marginBottom: window.innerWidth < 760 ? "5%" : '0%'}}>
