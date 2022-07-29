@@ -12,6 +12,7 @@ export const useStyles = makeStyles(() => ({
 			transitionDuration: "0.2s",
 			backgroundColor: "#5C5",
 		},
-    borderRadius: "5px"
+    borderRadius: "5px",
+    fontWeight: 900
 	},
 }));
