@@ -172,7 +172,7 @@ const HomePage = ({ user, setPageName }) => {
 				marginTop: window.innerWidth < 760 ? "25%" : "8%",
 			}}
 		>
-			<Typography variant="h4" sx={{ marginBottom: "5%"}}>
+			<Typography sx={{ marginBottom: "5%"}}>
 				<a
 					href={
 						"https://www.greylanhallandthenastykings.com/" +
@@ -188,7 +188,7 @@ const HomePage = ({ user, setPageName }) => {
 					display: "flex",
 					alignItems: "center",
 					width: "97%",
-					marginBottom: "8px",
+					margin: "40px 0px 30px",
 					padding: 0,
 					border: (theme) => `1px solid ${theme.palette.divider}`,
 					borderRadius: 1,
@@ -249,7 +249,7 @@ const HomePage = ({ user, setPageName }) => {
 					Singles
 				</ListItem>
 			</List>
-			<DrawerHeader />
+			{/* <DrawerHeader /> */}
 			{currentTable === "Shows" && (
 				<BasicTable
 					cols={showCols}
