@@ -18,7 +18,7 @@ import { login } from "../actionCreators/userActionCreators";
 // import { getVenueNames } from "../actionCreators/showsActionCreators";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom'
-import {logo} from '../images/logo_vector.png'
+import logo from '../images/logo_vector.png'
 import {useStyles} from './LoginPageStyles';
 
 export default function LoginPage() {
