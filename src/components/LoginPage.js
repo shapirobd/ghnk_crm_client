@@ -84,7 +84,7 @@ export default function LoginPage() {
 				sx={{
 					display: "flex",
 					flexWrap: "wrap",
-					width: window.innerWidth < 760 ? "90%" : "50%"
+					width: window.innerWidth < 760 ? "90%" : "50%",
 				}}
 			>
 				<div style={{ width: "100%" }}>
@@ -92,7 +92,7 @@ export default function LoginPage() {
 						Login
 					</Typography>
 					<form onSubmit={(e) => handleSubmit(e)}>
-						<FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+						<FormControl fullWidth sx={{ margin: "8px 0" }} variant="outlined">
 							<InputLabel htmlFor="outlined-adornment-password">
 								Username
 							</InputLabel>
@@ -103,7 +103,7 @@ export default function LoginPage() {
 								label="Username"
 							/>
 						</FormControl>
-						<FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+						<FormControl fullWidth sx={{ margin: "8px 0" }} variant="outlined">
 							<InputLabel htmlFor="outlined-adornment-password">
 								Password
 							</InputLabel>
@@ -127,26 +127,28 @@ export default function LoginPage() {
 								label="Password"
 							/>
 						</FormControl>
-						<FormControl fullWidth sx={{ m: 1, width: "100%" }}>
+						<FormControl fullWidth sx={{ margin: "8px 0", width: "100%" }}>
 							<Button
 								variant="contained"
 								type="submit"
 								sx={{
-									backgroundColor: "#77B4F7",
-									"&:hover": { backgroundColor: "#87C4F7" },
+									backgroundColor: "#1876D1",
+									boxShadow: "none",
+									"&:hover": { backgroundColor: "#3B87F3" },
 								}}
 								// onClick={(e) => handleSubmit(e)}
 							>
 								<b>Login</b>
 							</Button>
 						</FormControl>
-						<FormControl fullWidth sx={{ m: 1, width: "100%" }}>
+						<FormControl fullWidth sx={{ margin: "8px 0", width: "100%" }}>
 							<Button
 								variant="contained"
 								type="submit"
 								sx={{
-									backgroundColor: "#76CDA3",
-									"&:hover": { backgroundColor: "#A1DDAA" },
+									backgroundColor: "#3B3",
+									boxShadow: "none",
+									"&:hover": { backgroundColor: "#5C5" },
 								}}
 								onClick={(e) => handleRegisterButton(e)}
 							>
