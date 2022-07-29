@@ -17,7 +17,7 @@ function App() {
 				className={
 					pageName === "Home" && user ? "App-header-align-top" : "App-header"
 				}
-				style={{ height: window.inerHeight }}
+				style={{ height: window.innerHeight }}
 			>
 				{user ? (
 					<MiniDrawer
