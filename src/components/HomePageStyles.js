@@ -15,4 +15,10 @@ export const useStyles = makeStyles(() => ({
     borderRadius: "5px",
     fontWeight: 900
 	},
+	emptyList: {
+		height: "100%",
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center"
+	}
 }));

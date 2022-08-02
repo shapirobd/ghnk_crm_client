@@ -172,7 +172,7 @@ const HomePage = ({ user, setPageName }) => {
 				marginTop: window.innerWidth < 760 ? "25%" : "8%",
 			}}
 		>
-			<Typography sx={{ marginBottom: window.innerWidth < 760 ? "5%" : '0%'}}>
+			<Typography sx={{ marginBottom: window.innerWidth < 760 ? "5%" : "0%" }}>
 				<a
 					href={
 						"https://www.greylanhallandthenastykings.com/" +
@@ -251,42 +251,72 @@ const HomePage = ({ user, setPageName }) => {
 				</ListItem>
 			</List>
 			{/* <DrawerHeader /> */}
-			{currentTable === "Shows" && (
-				<BasicTable
-					cols={showCols}
-					data={shows}
-					colMap={colMap}
-					deleteFunction={deleteShow}
-					editFunction={editShow}
-					category="shows"
-					user={user}
-					deletedIdSetter={setDeletedShowID}
-				/>
-			)}
-			{currentTable === "Albums" && (
-				<BasicTable
-					cols={albumCols}
-					data={albums}
-					colMap={colMap}
-					deleteFunction={deleteAlbum}
-					editFunction={editAlbum}
-					category="albums"
-					user={user}
-					deletedIdSetter={setDeletedAlbumID}
-				/>
-			)}
-			{currentTable === "Singles" && (
-				<BasicTable
-					cols={singleCols}
-					data={singles}
-					colMap={colMap}
-					deleteFunction={deleteSingle}
-					editFunction={editSingle}
-					category="singles"
-					user={user}
-					deletedIdSetter={setDeletedSingleID}
-				/>
-			)}
+			{currentTable === "Shows" &&
+				(shows.length ? (
+					<BasicTable
+						cols={showCols}
+						data={shows}
+						colMap={colMap}
+						deleteFunction={deleteShow}
+						editFunction={editShow}
+						category="shows"
+						user={user}
+						deletedIdSetter={setDeletedShowID}
+					/>
+				) : (
+					<div className={classes.emptyList}>
+						<Typography
+							variant="h6"
+							sx={{ color: "grey", fontWeight: "bolder" }}
+						>
+							There are no shows at this time.
+						</Typography>
+					</div>
+				))}
+			{currentTable === "Albums" &&
+				(albums.length ? (
+					<BasicTable
+						cols={albumCols}
+						data={albums}
+						colMap={colMap}
+						deleteFunction={deleteAlbum}
+						editFunction={editAlbum}
+						category="albums"
+						user={user}
+						deletedIdSetter={setDeletedAlbumID}
+					/>
+				) : (
+					<div className={classes.emptyList}>
+						<Typography
+							variant="h6"
+							sx={{ color: "grey", fontWeight: "bolder" }}
+						>
+							There are no albums at this time.
+						</Typography>
+					</div>
+				))}
+			{currentTable === "Singles" &&
+				(singles.length ? (
+					<BasicTable
+						cols={singleCols}
+						data={singles}
+						colMap={colMap}
+						deleteFunction={deleteSingle}
+						editFunction={editSingle}
+						category="singles"
+						user={user}
+						deletedIdSetter={setDeletedSingleID}
+					/>
+				) : (
+					<div className={classes.emptyList}>
+						<Typography
+							variant="h6"
+							sx={{ color: "grey", fontWeight: "bolder" }}
+						>
+							There are no albums at this time.
+						</Typography>
+					</div>
+				))}
 		</div>
 	);
 };
