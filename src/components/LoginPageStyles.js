@@ -17,7 +17,7 @@ export const useStyles = makeStyles(() => ({
 	},
   form: {
     width: "60%",
-    margin: auto,
+    margin: "auto",
   },
   formMobile: {
 
