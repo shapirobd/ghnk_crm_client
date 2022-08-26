@@ -15,4 +15,11 @@ export const useStyles = makeStyles(() => ({
     marginBottom: "20px",
     border: "7px solid black"
 	},
+  form: {
+    width: "60%",
+    margin: auto,
+  },
+  formMobile: {
+
+  }
 }));

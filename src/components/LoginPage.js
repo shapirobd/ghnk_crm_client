@@ -91,11 +91,21 @@ export default function LoginPage() {
 				}}
 			>
 				<div style={{ width: "100%" }}>
-					<img src={logo} className={window.innerWidth < 760 ? classes.logoMobile : classes.logo}/>
+					<img
+						src={logo}
+						className={
+							window.innerWidth < 1060 ? classes.logoMobile : classes.logo
+						}
+					/>
 					{/* <Typography variant="h3" sx={{ marginBottom: "20px" }}>
 						Login
 					</Typography> */}
-					<form onSubmit={(e) => handleSubmit(e)}>
+					<form
+						onSubmit={(e) => handleSubmit(e)}
+						className={
+							window.innerWidth < 760 ? classes.formMobile : classes.form
+						}
+					>
 						<FormControl fullWidth sx={{ margin: "8px 0" }} variant="outlined">
 							<InputLabel htmlFor="outlined-adornment-password">
 								Username
