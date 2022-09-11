@@ -18,8 +18,10 @@ import { register } from "../actionCreators/userActionCreators";
 // import { getVenueNames } from "../actionCreators/showsActionCreators";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom'
+import { useStyles } from "./LoginPageStyles";
 
 export default function RegisterPage() {
+	const classes = useStyles();
   const navigate = useNavigate();
 	const user = useSelector((state) => state.user);
 	const dispatch = useDispatch();
@@ -63,6 +65,11 @@ export default function RegisterPage() {
 		event.preventDefault();
 	};
 
+	const handleBackToLoginButton = (event) => {
+		event.preventDefault();
+		navigate("/");
+	};
+
 	// useEffect(() => {
 	// 	const getVenueNames = async () => {
 	// 		const resp = await axios.get(`http://localhost:5000/shows`, {
@@ -82,13 +89,19 @@ export default function RegisterPage() {
 				sx={{
 					display: "flex",
 					flexWrap: "wrap",
+					width: window.innerWidth < 760 ? "90%" : "50%",
 				}}
 			>
 				<div>
 					<Typography variant="h3" sx={{ marginBottom: "20px" }}>
 						Register
 					</Typography>
-					<form onSubmit={(e) => handleSubmit(e)}>
+					<form
+						onSubmit={(e) => handleSubmit(e)}
+						className={
+							window.innerWidth < 760 ? classes.formMobile : classes.form
+						}
+					>
 						<FormControl fullWidth sx={{ m: 1 }} variant="outlined">
 							<InputLabel htmlFor="outlined-adornment-password">
 								First Name
@@ -159,6 +172,21 @@ export default function RegisterPage() {
 								// onClick={(e) => handleSubmit(e)}
 							>
 								<b>Submit</b>
+							</Button>
+						</FormControl>
+						<FormControl fullWidth sx={{ margin: "8px 0", width: "100%" }}>
+							<Button
+								variant="contained"
+								type="submit"
+								sx={{
+									backgroundColor: "#3B3",
+									boxShadow: "none",
+									"&:hover": { backgroundColor: "#5C5", boxShadow: "none" },
+									"&:active": { boxShadow: "none" },
+								}}
+								onClick={(e) => handleBackToLoginButton(e)}
+							>
+								<b>Back to login page</b>
 							</Button>
 						</FormControl>
 					</form>
