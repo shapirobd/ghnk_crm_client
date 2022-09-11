@@ -150,7 +150,12 @@ export default function RegisterPage() {
 							<Button
 								variant="contained"
 								type="submit"
-								sx={{ backgroundColor: "#87C4F7" }}
+								sx={{
+									backgroundColor: "#1876D1",
+									boxShadow: "none",
+									"&:hover": { backgroundColor: "#3B87F3", boxShadow: "none" },
+									"&:active": { boxShadow: "none" },
+								}}
 								// onClick={(e) => handleSubmit(e)}
 							>
 								<b>Submit</b>
