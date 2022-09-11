@@ -206,32 +206,32 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 							))}
 						</List>
 						<Divider />
-						<List>
-							{["Logout"].map((text, index) => (
-								<ListItemButton
-									key={text}
-									sx={{
-										minHeight: 48,
-										justifyContent: open ? "initial" : "center",
-										px: 2.5,
-									}}
-									onClick={(e) => handleLogout(e)}
-								>
-									<ListItemIcon
-										sx={{
-											minWidth: 0,
-											mr: open ? 3 : "auto",
-											justifyContent: "center",
-										}}
-									>
-										{index === 0 && <LogoutIcon />}
-									</ListItemIcon>
-									<ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-								</ListItemButton>
-							))}
-						</List>
 					</>
 				}
+				<List>
+					{["Logout"].map((text, index) => (
+						<ListItemButton
+							key={text}
+							sx={{
+								minHeight: 48,
+								justifyContent: open ? "initial" : "center",
+								px: 2.5,
+							}}
+							onClick={(e) => handleLogout(e)}
+						>
+							<ListItemIcon
+								sx={{
+									minWidth: 0,
+									mr: open ? 3 : "auto",
+									justifyContent: "center",
+								}}
+							>
+								{index === 0 && <LogoutIcon />}
+							</ListItemIcon>
+							<ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+						</ListItemButton>
+					))}
+				</List>
 			</Drawer>
 			<Box
 				component="main"
