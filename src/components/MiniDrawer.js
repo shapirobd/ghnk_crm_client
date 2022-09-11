@@ -216,6 +216,7 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 								minHeight: 48,
 								justifyContent: open ? "initial" : "center",
 								px: 2.5,
+								color: "red"
 							}}
 							onClick={(e) => handleLogout(e)}
 						>
@@ -228,7 +229,7 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 							>
 								{index === 0 && <LogoutIcon />}
 							</ListItemIcon>
-							<ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+							<ListItemText primary={text} sx={{ opacity: open ? 1 : 0, color: "red" }} />
 						</ListItemButton>
 					))}
 				</List>
