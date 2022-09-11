@@ -248,7 +248,15 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 			{user.is_admin ?
 				<Router user={user} venues={venues} pageName={pageName} setPageName={setPageName}/>
 					:
-				<Typography>You must be an admin to have read/write access to this content.</Typography>
+				<div style={{ 
+							width: window.innerWidth < 760 ? "100%" : "50%", 
+							height: "90vh", 
+							display: "flex",
+							flexDirection: "column",
+							justifyContent: "center",
+							alignItems: "center" }}>
+					<Typography variant="h6">You must be an admin to have read/write access to this content.</Typography>
+				</div>
 			}
 			</Box>
 		</Box>
