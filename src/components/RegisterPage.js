@@ -102,7 +102,7 @@ export default function RegisterPage() {
 							window.innerWidth < 760 ? classes.formMobile : classes.form
 						}
 					>
-						<FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+						<FormControl fullWidth sx={{ margin: "8px 0" }} variant="outlined">
 							<InputLabel htmlFor="outlined-adornment-password">
 								First Name
 							</InputLabel>
@@ -113,7 +113,7 @@ export default function RegisterPage() {
 								label="First Name"
 							/>
 						</FormControl>
-						<FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+						<FormControl fullWidth sx={{ margin: "8px 0" }} variant="outlined">
 							<InputLabel htmlFor="outlined-adornment-password">
 								Last Name
 							</InputLabel>
@@ -124,7 +124,7 @@ export default function RegisterPage() {
 								label="Last Name"
 							/>
 						</FormControl>
-						<FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+						<FormControl fullWidth sx={{ margin: "8px 0" }} variant="outlined">
 							<InputLabel htmlFor="outlined-adornment-password">
 								Username
 							</InputLabel>
@@ -135,7 +135,7 @@ export default function RegisterPage() {
 								label="Username"
 							/>
 						</FormControl>
-						<FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+						<FormControl fullWidth sx={{ margin: "8px 0" }} variant="outlined">
 							<InputLabel htmlFor="outlined-adornment-password">
 								Password
 							</InputLabel>
@@ -159,7 +159,7 @@ export default function RegisterPage() {
 								label="Password"
 							/>
 						</FormControl>
-						<FormControl fullWidth sx={{ m: 1, width: "100%" }}>
+						<FormControl fullWidth sx={{ margin: "8px 0", width: "100%" }}>
 							<Button
 								variant="contained"
 								type="submit"
