@@ -215,8 +215,7 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 							sx={{
 								minHeight: 48,
 								justifyContent: open ? "initial" : "center",
-								px: 2.5,
-								color: "red"
+								px: 2.5
 							}}
 							onClick={(e) => handleLogout(e)}
 						>
@@ -225,6 +224,7 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 									minWidth: 0,
 									mr: open ? 3 : "auto",
 									justifyContent: "center",
+									color: "red"
 								}}
 							>
 								{index === 0 && <LogoutIcon />}
