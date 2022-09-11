@@ -171,63 +171,67 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 					</IconButton>
 				</DrawerHeader>
 				<Divider />
-				<List>
-					{["Home", "Shows", "Music"].map((text, index) => (
-						<ListItemButton
-							key={text}
-							sx={{
-								minHeight: 48,
-								justifyContent: open ? "initial" : "center",
-								px: 2.5,
-							}}
-							onClick={() => {
-								if (window.innerWidth < 760) {
-									handleDrawerClose();
-								}
-								setPageName(text); 
-								navigate(pathMap[text]);
-							}}
-						>
-							<ListItemIcon
-								sx={{
-									minWidth: 0,
-									mr: open ? 3 : "auto",
-									justifyContent: "center",
-								}}
-							>
-								{index === 0 && <HomeIcon />}
-								{index === 1 && <ConfirmationNumberIcon />}
-								{index === 2 && <LibraryMusicIcon />}
-							</ListItemIcon>
-							<ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-						</ListItemButton>
-					))}
-				</List>
-				<Divider />
-				<List>
-					{["Logout"].map((text, index) => (
-						<ListItemButton
-							key={text}
-							sx={{
-								minHeight: 48,
-								justifyContent: open ? "initial" : "center",
-								px: 2.5,
-							}}
-							onClick={(e) => handleLogout(e)}
-						>
-							<ListItemIcon
-								sx={{
-									minWidth: 0,
-									mr: open ? 3 : "auto",
-									justifyContent: "center",
-								}}
-							>
-								{index === 0 && <LogoutIcon />}
-							</ListItemIcon>
-							<ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-						</ListItemButton>
-					))}
-				</List>
+				{user.is_admin &&
+					<>
+						<List>
+							{["Home", "Shows", "Music"].map((text, index) => (
+								<ListItemButton
+									key={text}
+									sx={{
+										minHeight: 48,
+										justifyContent: open ? "initial" : "center",
+										px: 2.5,
+									}}
+									onClick={() => {
+										if (window.innerWidth < 760) {
+											handleDrawerClose();
+										}
+										setPageName(text); 
+										navigate(pathMap[text]);
+									}}
+								>
+									<ListItemIcon
+										sx={{
+											minWidth: 0,
+											mr: open ? 3 : "auto",
+											justifyContent: "center",
+										}}
+									>
+										{index === 0 && <HomeIcon />}
+										{index === 1 && <ConfirmationNumberIcon />}
+										{index === 2 && <LibraryMusicIcon />}
+									</ListItemIcon>
+									<ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+								</ListItemButton>
+							))}
+						</List>
+						<Divider />
+						<List>
+							{["Logout"].map((text, index) => (
+								<ListItemButton
+									key={text}
+									sx={{
+										minHeight: 48,
+										justifyContent: open ? "initial" : "center",
+										px: 2.5,
+									}}
+									onClick={(e) => handleLogout(e)}
+								>
+									<ListItemIcon
+										sx={{
+											minWidth: 0,
+											mr: open ? 3 : "auto",
+											justifyContent: "center",
+										}}
+									>
+										{index === 0 && <LogoutIcon />}
+									</ListItemIcon>
+									<ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+								</ListItemButton>
+							))}
+						</List>
+					</>
+				}
 			</Drawer>
 			<Box
 				component="main"
@@ -241,7 +245,11 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 				}}
 			>
 				{/* {pageMap[pageName]} */}
+			{user.is_admin ?
 				<Router user={user} venues={venues} pageName={pageName} setPageName={setPageName}/>
+					:
+				<Typography>You must be an admin to have read/write access to this content.</Typography>
+			}
 			</Box>
 		</Box>
 	);
