@@ -45,13 +45,13 @@ export default function AlbumForm({ user, albumID }) {
 	};
 
 	async function submitAlbum(data) {
-		let isCodePresent = data.url.indexOf("album:") > -1;
+		let isCodePresent = data.url.indexOf("album/") > -1;
 		if (!isCodePresent) {
 			return;
 		}
 
 		let code = data.url.substring(
-			data.url.indexOf("album:") + 6,
+			data.url.indexOf("album/") + 6,
 			data.url.length
 		);
 
