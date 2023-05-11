@@ -20,7 +20,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 	...theme.mixins.toolbar,
 }));
 
-const showCols = ["Venue", "Date", "Time", "Ticket Link", "Solo Show"];
+const showCols = ["Venue", "Other Artists", "Date", "Time", "Ticket Link", "Solo Show"];
 const albumCols = ["Name", "URL", "Code"];
 const singleCols = ["Name", "URL", "Code"];
 

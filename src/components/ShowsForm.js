@@ -40,6 +40,7 @@ export default function ShowsForm({ venues, venueType }) {
 		time: "",
 		is_solo: false,
 		ticket_link: "",
+		other_artists: "",
 	});
 	const [missingFields, setMissingFields] = useState([]);
 
@@ -137,6 +138,15 @@ export default function ShowsForm({ venues, venueType }) {
 				/>
 			)}
 			<FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+				<InputLabel htmlFor="other_artists">Other Artists</InputLabel>
+				<OutlinedInput
+					id="other_artists"
+					value={newShowValues.other_artists}
+					onChange={(e) => handleShowChange(e, "other_artists")}
+					label="Other Artists"
+				/>
+			</FormControl>
+			<FormControl fullWidth sx={{ m: 1 }} variant="outlined">
 				<InputLabel htmlFor="ticket_link">Ticket Link</InputLabel>
 				<OutlinedInput
 					id="ticket_link"
@@ -145,14 +155,14 @@ export default function ShowsForm({ venues, venueType }) {
 					onChange={(e) => handleShowChange(e, "ticket_link")}
 					label="Ticket Link"
 				/>
-				{missingFields.includes("link") && (
+				{/* {missingFields.includes("link") && (
 					<Typography
 						variant="caption"
 						sx={{ color: "red", textAlign: "left" }}
 					>
 						Link is required
 					</Typography>
-				)}
+				)} */}
 			</FormControl>
 			<FormControl fullWidth sx={{ m: 1 }} variant="outlined">
 				<OutlinedInput
