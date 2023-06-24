@@ -48,7 +48,6 @@ export const addSingle = (data, code, user, setSubmitSuccess) => {
 };
 export const addShow = (data, user) => {
 	return async (dispatch) => {
-		let errResp;
 		try {
 			console.log(data);
 			const resp = await axios.post(API_URL + "/shows", {
@@ -56,6 +55,21 @@ export const addShow = (data, user) => {
 				token: user.token,
 			}).catch((e) => {
 				console.log("e = ", e)
+				Toastify({
+					text: "Error: " + e.message,
+					duration: 5000,
+					// destination: "https://github.com/apvarun/toastify-js",
+					newWindow: true,
+					close: true,
+					gravity: "top", // `top` or `bottom`
+					position: "right", // `left`, `center` or `right`
+					stopOnFocus: true, // Prevents dismissing of toast on hover
+					style: {
+						background:
+							"linear-gradient(to right, rgb(255, 95, 109), rgb(255, 195, 113))",
+					},
+					onClick: function () {}, // Callback after click
+				}).showToast();
 			});
       const showsWithVenueResp = await axios.get(API_URL + "/shows?getVenueNames=true");
       const newShow = showsWithVenueResp.data.shows.filter(show => show.id = resp.data.id);
@@ -76,22 +90,6 @@ export const addShow = (data, user) => {
 			}).showToast();
 		} catch (e) {
 			console.error(e);
-			console.log("resp = ", resp);
-			Toastify({
-				text: "Error: " + resp.message,
-				duration: 5000,
-				// destination: "https://github.com/apvarun/toastify-js",
-				newWindow: true,
-				close: true,
-				gravity: "top", // `top` or `bottom`
-				position: "right", // `left`, `center` or `right`
-				stopOnFocus: true, // Prevents dismissing of toast on hover
-				style: {
-					background:
-						"linear-gradient(to right, rgb(255, 95, 109), rgb(255, 195, 113))",
-				},
-				onClick: function () {}, // Callback after click
-			}).showToast();
 		}
 	};
 };
