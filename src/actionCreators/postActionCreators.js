@@ -48,12 +48,14 @@ export const addSingle = (data, code, user, setSubmitSuccess) => {
 };
 export const addShow = (data, user) => {
 	return async (dispatch) => {
-		let resp;
+		let errResp;
 		try {
 			console.log(data);
-			resp = await axios.post(API_URL + "/shows", {
+			const resp = await axios.post(API_URL + "/shows", {
 				...data,
 				token: user.token,
+			}).catch((e) => {
+				console.log("e = ", e)
 			});
       const showsWithVenueResp = await axios.get(API_URL + "/shows?getVenueNames=true");
       const newShow = showsWithVenueResp.data.shows.filter(show => show.id = resp.data.id);
