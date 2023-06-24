@@ -48,9 +48,10 @@ export const addSingle = (data, code, user, setSubmitSuccess) => {
 };
 export const addShow = (data, user) => {
 	return async (dispatch) => {
+		let resp;
 		try {
 			console.log(data);
-			const resp = await axios.post(API_URL + "/shows", {
+			resp = await axios.post(API_URL + "/shows", {
 				...data,
 				token: user.token,
 			});
@@ -73,9 +74,9 @@ export const addShow = (data, user) => {
 			}).showToast();
 		} catch (e) {
 			console.error(e);
-			console.log("e = ", e);
+			console.log("resp = ", resp);
 			Toastify({
-				text: "Error: " + e.message,
+				text: "Error: " + resp.message,
 				duration: 5000,
 				// destination: "https://github.com/apvarun/toastify-js",
 				newWindow: true,
@@ -84,7 +85,8 @@ export const addShow = (data, user) => {
 				position: "right", // `left`, `center` or `right`
 				stopOnFocus: true, // Prevents dismissing of toast on hover
 				style: {
-					background: "linear-gradient(to right, rgb(255, 95, 109), rgb(255, 195, 113))"
+					background:
+						"linear-gradient(to right, rgb(255, 95, 109), rgb(255, 195, 113))",
 				},
 				onClick: function () {}, // Callback after click
 			}).showToast();
