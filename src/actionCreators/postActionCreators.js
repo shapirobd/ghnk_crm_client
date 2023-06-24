@@ -73,6 +73,7 @@ export const addShow = (data, user) => {
 			}).showToast();
 		} catch (e) {
 			console.error(e);
+			console.log("e = ", e);
 			Toastify({
 				text: "Error: " + e.message,
 				duration: 5000,
