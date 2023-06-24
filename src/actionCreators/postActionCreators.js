@@ -75,7 +75,7 @@ export const addShow = (data, user) => {
 			console.error(e);
 			Toastify({
 				text: "Error: " + e.message,
-				duration: 3000,
+				duration: 5000,
 				// destination: "https://github.com/apvarun/toastify-js",
 				newWindow: true,
 				close: true,
