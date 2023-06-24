@@ -21,9 +21,38 @@ export const addAlbum = (data, code, user, setSubmitSuccess) => {
 			if (resp.data.affectedRows) {
 				setSubmitSuccess(true);
 				dispatch(addedAlbum(resp.data));
+				Toastify({
+					text: "Album added successfully",
+					duration: 3000,
+					// destination: "https://github.com/apvarun/toastify-js",
+					newWindow: true,
+					close: true,
+					gravity: "top", // `top` or `bottom`
+					position: "right", // `left`, `center` or `right`
+					stopOnFocus: true, // Prevents dismissing of toast on hover
+					style: {
+						background: "linear-gradient(to right, #00b09b, #96c93d)",
+					},
+					onClick: function () {}, // Callback after click
+				}).showToast();
 			}
 		} catch (e) {
 			console.error(e);
+			Toastify({
+				text: "Error: " + e.message,
+				duration: 5000,
+				// destination: "https://github.com/apvarun/toastify-js",
+				newWindow: true,
+				close: true,
+				gravity: "top", // `top` or `bottom`
+				position: "right", // `left`, `center` or `right`
+				stopOnFocus: true, // Prevents dismissing of toast on hover
+				style: {
+					background:
+						"linear-gradient(to right, rgb(255, 95, 109), rgb(255, 195, 113))",
+				},
+				onClick: function () {}, // Callback after click
+			}).showToast();
 		}
 	};
 };
@@ -40,9 +69,38 @@ export const addSingle = (data, code, user, setSubmitSuccess) => {
 			if (resp.data.affectedRows) {
 				setSubmitSuccess(true);
         dispatch(addedSingle(resp.data));
+				Toastify({
+					text: "Single added successfully",
+					duration: 3000,
+					// destination: "https://github.com/apvarun/toastify-js",
+					newWindow: true,
+					close: true,
+					gravity: "top", // `top` or `bottom`
+					position: "right", // `left`, `center` or `right`
+					stopOnFocus: true, // Prevents dismissing of toast on hover
+					style: {
+						background: "linear-gradient(to right, #00b09b, #96c93d)",
+					},
+					onClick: function () {}, // Callback after click
+				}).showToast();
 			}
 		} catch (e) {
 			console.error(e);
+			Toastify({
+				text: "Error: " + e.message,
+				duration: 5000,
+				// destination: "https://github.com/apvarun/toastify-js",
+				newWindow: true,
+				close: true,
+				gravity: "top", // `top` or `bottom`
+				position: "right", // `left`, `center` or `right`
+				stopOnFocus: true, // Prevents dismissing of toast on hover
+				style: {
+					background:
+						"linear-gradient(to right, rgb(255, 95, 109), rgb(255, 195, 113))",
+				},
+				onClick: function () {}, // Callback after click
+			}).showToast();
 		}
 	};
 };
