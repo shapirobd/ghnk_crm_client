@@ -1,6 +1,6 @@
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
-import "styles/toastifyStyles.css"
+import "./styles/toastifyStyles.css"
 
 export const notifySuccess = (itemType, action) => {
 	// toast("Default Notification !");
