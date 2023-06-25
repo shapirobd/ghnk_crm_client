@@ -1,5 +1,6 @@
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+import "styles/toastifyStyles.css"
 
 export const notifySuccess = (itemType, action) => {
 	// toast("Default Notification !");
@@ -13,6 +14,7 @@ export const notifySuccess = (itemType, action) => {
 	}
 	toast.success(itemType + " " + actionFormatted + " successfully", {
 		position: toast.POSITION.TOP_RIGHT,
+		className: 'notify-success'
 	});
 
 	// toast.error("Error Notification !", {
@@ -34,7 +36,8 @@ export const notifySuccess = (itemType, action) => {
 };
 
 export const notifyError = (errorMessage) => {
-	toast.success("ERROR: " + errorMessage, {
+	toast.error("ERROR: " + errorMessage, {
 		position: toast.POSITION.TOP_RIGHT,
+		className: 'notify-error'
 	});
 };
