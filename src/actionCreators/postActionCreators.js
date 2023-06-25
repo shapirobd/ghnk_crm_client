@@ -37,6 +37,9 @@ export const addAlbum = (data, code, user, setSubmitSuccess) => {
 				}).showToast();
 			}
 		} catch (e) {
+			console.log("e = ", e);
+			console.log("e.response = ", e.response);
+			console.log("e.response.data = ", e.response.data);
 			console.error(e);
 			Toastify({
 				text: "Error: " + e.message,
