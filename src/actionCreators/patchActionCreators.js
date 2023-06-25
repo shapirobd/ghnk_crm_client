@@ -1,8 +1,9 @@
 import axios from "axios";
 import { UPDATE_SHOW, UPDATE_SINGLE, UPDATE_ALBUM } from "../actionTypes";
 import { API_URL } from "../config";
-import Toastify from "toastify-js";
-import "toastify-js/src/toastify.css";
+// import Toastify from "toastify-js";
+// import "toastify-js/src/toastify.css";
+import { notifySuccess, notifyError } from "../helpers";
 
 export const updateShow = (showID, data, user, setSubmitSuccess) => {
 	return async (dispatch) => {
@@ -26,37 +27,10 @@ export const updateShow = (showID, data, user, setSubmitSuccess) => {
 			// console.log("updatedShow: ", updatedShow);
 			dispatch(showUpdated(shows.data, showsWithVenues.data));
 			setSubmitSuccess(true)
-			Toastify({
-				text: "Show updated successfully",
-				duration: 3000,
-				// destination: "https://github.com/apvarun/toastify-js",
-				newWindow: true,
-				close: true,
-				gravity: "top", // `top` or `bottom`
-				position: "right", // `left`, `center` or `right`
-				stopOnFocus: true, // Prevents dismissing of toast on hover
-				style: {
-					background: "linear-gradient(to right, #00b09b, #96c93d)",
-				},
-				onClick: function () {}, // Callback after click
-			}).showToast();
+			notifySuccess("Show", "update");
 		} catch (e) {
 			console.error(e);
-			Toastify({
-				text: "Error: " + e.response.data.message,
-				duration: 5000,
-				// destination: "https://github.com/apvarun/toastify-js",
-				newWindow: true,
-				close: true,
-				gravity: "top", // `top` or `bottom`
-				position: "right", // `left`, `center` or `right`
-				stopOnFocus: true, // Prevents dismissing of toast on hover
-				style: {
-					background:
-						"linear-gradient(to right, rgb(255, 95, 109), rgb(255, 195, 113))",
-				},
-				onClick: function () {}, // Callback after click
-			}).showToast();
+			notifyError(e.response.data.message);
 		}
 	};
 };
@@ -76,37 +50,10 @@ export const updateAlbum = (albumID, data, code, user, setSubmitSuccess) => {
 			const albums = await axios.get(API_URL + "/albums");
 			setSubmitSuccess(true);
 			dispatch(albumUpdated(albums));
-			Toastify({
-				text: "Album updated successfully",
-				duration: 3000,
-				// destination: "https://github.com/apvarun/toastify-js",
-				newWindow: true,
-				close: true,
-				gravity: "top", // `top` or `bottom`
-				position: "right", // `left`, `center` or `right`
-				stopOnFocus: true, // Prevents dismissing of toast on hover
-				style: {
-					background: "linear-gradient(to right, #00b09b, #96c93d)",
-				},
-				onClick: function () {}, // Callback after click
-			}).showToast();
+			notifySuccess("Album", "update");
 		} catch (e) {
 			console.error(e);
-			Toastify({
-				text: "Error: " + e.response.data.message,
-				duration: 5000,
-				// destination: "https://github.com/apvarun/toastify-js",
-				newWindow: true,
-				close: true,
-				gravity: "top", // `top` or `bottom`
-				position: "right", // `left`, `center` or `right`
-				stopOnFocus: true, // Prevents dismissing of toast on hover
-				style: {
-					background:
-						"linear-gradient(to right, rgb(255, 95, 109), rgb(255, 195, 113))",
-				},
-				onClick: function () {}, // Callback after click
-			}).showToast();
+			notifyError(e.response.data.message);
 		}
 	};
 };
@@ -126,37 +73,10 @@ export const updateSingle = (singleID, data, code, user, setSubmitSuccess) => {
 			const singles = await axios.get(API_URL + "/singles");
 			setSubmitSuccess(true);
 			dispatch(singleUpdated(singles));
-			Toastify({
-				text: "Single updated successfully",
-				duration: 3000,
-				// destination: "https://github.com/apvarun/toastify-js",
-				newWindow: true,
-				close: true,
-				gravity: "top", // `top` or `bottom`
-				position: "right", // `left`, `center` or `right`
-				stopOnFocus: true, // Prevents dismissing of toast on hover
-				style: {
-					background: "linear-gradient(to right, #00b09b, #96c93d)",
-				},
-				onClick: function () {}, // Callback after click
-			}).showToast();
+			notifySuccess("Single", "update");
 		} catch (e) {
 			console.error(e);
-			Toastify({
-				text: "Error: " + e.response.data.message,
-				duration: 5000,
-				// destination: "https://github.com/apvarun/toastify-js",
-				newWindow: true,
-				close: true,
-				gravity: "top", // `top` or `bottom`
-				position: "right", // `left`, `center` or `right`
-				stopOnFocus: true, // Prevents dismissing of toast on hover
-				style: {
-					background:
-						"linear-gradient(to right, rgb(255, 95, 109), rgb(255, 195, 113))",
-				},
-				onClick: function () {}, // Callback after click
-			}).showToast();
+			notifyError(e.response.data.message);
 		}
 	};
 };
