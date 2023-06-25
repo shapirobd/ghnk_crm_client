@@ -148,7 +148,7 @@ export const addShow = (data, user) => {
 			// 	},
 			// 	onClick: function () {}, // Callback after click
 			// }).showToast();
-			notifyError("Show", "add");
+			notifyError(e.response.data.message);
 		}
 	};
 };
