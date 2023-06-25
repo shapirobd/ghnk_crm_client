@@ -39,7 +39,7 @@ export const addAlbum = (data, code, user, setSubmitSuccess) => {
 		} catch (e) {
 			console.error(e);
 			Toastify({
-				text: "Error: " + e.message,
+				text: "Error: " + e.response.data.message,
 				duration: 5000,
 				// destination: "https://github.com/apvarun/toastify-js",
 				newWindow: true,
@@ -87,7 +87,7 @@ export const addSingle = (data, code, user, setSubmitSuccess) => {
 		} catch (e) {
 			console.error(e);
 			Toastify({
-				text: "Error: " + e.message,
+				text: "Error: " + e.response.data.message,
 				duration: 5000,
 				// destination: "https://github.com/apvarun/toastify-js",
 				newWindow: true,
@@ -135,7 +135,7 @@ export const addShow = (data, user) => {
 			console.log("e.response.data = ", e.response.data);
 			console.error(e);
 			Toastify({
-				text: "Error: " + e.message,
+				text: "Error: " + e.response.data.message,
 				duration: 5000,
 				// destination: "https://github.com/apvarun/toastify-js",
 				newWindow: true,

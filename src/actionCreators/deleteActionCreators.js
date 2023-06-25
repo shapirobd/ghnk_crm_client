@@ -37,7 +37,7 @@ export const deleteAlbum = (user, albumID, setDeletedAlbumID) => {
 		} catch (e) {
 			console.error(e);
 			Toastify({
-				text: "Error: " + e.message,
+				text: "Error: " + e.response.data.message,
 				duration: 5000,
 				// destination: "https://github.com/apvarun/toastify-js",
 				newWindow: true,
@@ -84,7 +84,7 @@ export const deleteShow = (user, showID, setDeletedShowID, setPreviousShow = fal
 		} catch (e) {
 			console.error(e);
 			Toastify({
-				text: "Error: " + e.message,
+				text: "Error: " + e.response.data.message,
 				duration: 5000,
 				// destination: "https://github.com/apvarun/toastify-js",
 				newWindow: true,
@@ -132,7 +132,7 @@ export const deleteSingle = (user, singleID, setDeletedSingleID) => {
 		} catch (e) {
 			console.error(e);
 			Toastify({
-				text: "Error: " + e.message,
+				text: "Error: " + e.response.data.message,
 				duration: 5000,
 				// destination: "https://github.com/apvarun/toastify-js",
 				newWindow: true,
