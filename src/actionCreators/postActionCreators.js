@@ -37,9 +37,6 @@ export const addAlbum = (data, code, user, setSubmitSuccess) => {
 				}).showToast();
 			}
 		} catch (e) {
-			console.log("e = ", e);
-			console.log("e.response = ", e.response);
-			console.log("e.response.data = ", e.response.data);
 			console.error(e);
 			Toastify({
 				text: "Error: " + e.message,
@@ -133,6 +130,9 @@ export const addShow = (data, user) => {
 				onClick: function () {}, // Callback after click
 			}).showToast();
 		} catch (e) {
+			console.log("e = ", e);
+			console.log("e.response = ", e.response);
+			console.log("e.response.data = ", e.response.data);
 			console.error(e);
 			Toastify({
 				text: "Error: " + e.message,
