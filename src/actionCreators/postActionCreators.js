@@ -6,8 +6,8 @@ import {
 	ADD_SHOW, ADD_SINGLE, ADD_ALBUM
 } from "../actionTypes";
 import { API_URL } from "../config";
-// import Toastify from "toastify-js";
-// import "toastify-js/src/toastify.css";
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css";
 import { notifySuccess, notifyError } from "../helpers"
 
 export const addAlbum = (data, code, user, setSubmitSuccess) => {
