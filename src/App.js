@@ -5,6 +5,7 @@ import LoginPage from "./components/LoginPage";
 import RegisterPage from "./components/RegisterPage";
 import React, { useState } from "react";
 import LoginRouter from './LoginRouter'
+import { ToastContainer, toast } from "react-toastify";
 
 function App() {
 	const user = useSelector((state) => state.user);
@@ -29,6 +30,7 @@ function App() {
 					<LoginRouter />
 				)}
 			</header>
+			<ToastContainer />
 		</div>
 	);
 }

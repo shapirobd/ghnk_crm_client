@@ -6,8 +6,9 @@ import {
 	ADD_SHOW, ADD_SINGLE, ADD_ALBUM
 } from "../actionTypes";
 import { API_URL } from "../config";
-import Toastify from "toastify-js";
-import "toastify-js/src/toastify.css";
+// import Toastify from "toastify-js";
+// import "toastify-js/src/toastify.css";
+import { notifySuccess, notifyError } from "../helpers"
 
 export const addAlbum = (data, code, user, setSubmitSuccess) => {
 	return async (dispatch) => {
@@ -115,37 +116,39 @@ export const addShow = (data, user) => {
       const showsWithVenueResp = await axios.get(API_URL + "/shows?getVenueNames=true");
       const newShow = showsWithVenueResp.data.shows.filter(show => show.id = resp.data.id);
       dispatch(addedShow(resp.data, newShow[0]));
-			Toastify({
-				text: "Show added successfully",
-				duration: 3000,
-				// destination: "https://github.com/apvarun/toastify-js",
-				newWindow: true,
-				close: true,
-				gravity: "top", // `top` or `bottom`
-				position: "right", // `left`, `center` or `right`
-				stopOnFocus: true, // Prevents dismissing of toast on hover
-				style: {
-					background: "linear-gradient(to right, #00b09b, #96c93d)",
-				},
-				onClick: function () {}, // Callback after click
-			}).showToast();
+			// Toastify({
+			// 	text: "Show added successfully",
+			// 	duration: 3000,
+			// 	// destination: "https://github.com/apvarun/toastify-js",
+			// 	newWindow: true,
+			// 	close: true,
+			// 	gravity: "top", // `top` or `bottom`
+			// 	position: "right", // `left`, `center` or `right`
+			// 	stopOnFocus: true, // Prevents dismissing of toast on hover
+			// 	style: {
+			// 		background: "linear-gradient(to right, #00b09b, #96c93d)",
+			// 	},
+			// 	onClick: function () {}, // Callback after click
+			// }).showToast();
+			notifySuccess("Show", "add")
 		} catch (e) {
 			console.error(e);
-			Toastify({
-				text: "Error: " + e.response.data.message,
-				duration: 5000,
-				// destination: "https://github.com/apvarun/toastify-js",
-				newWindow: true,
-				close: true,
-				gravity: "top", // `top` or `bottom`
-				position: "right", // `left`, `center` or `right`
-				stopOnFocus: true, // Prevents dismissing of toast on hover
-				style: {
-					background:
-						"linear-gradient(to right, rgb(255, 95, 109), rgb(255, 195, 113))",
-				},
-				onClick: function () {}, // Callback after click
-			}).showToast();
+			// Toastify({
+			// 	text: "Error: " + e.response.data.message,
+			// 	duration: 5000,
+			// 	// destination: "https://github.com/apvarun/toastify-js",
+			// 	newWindow: true,
+			// 	close: true,
+			// 	gravity: "top", // `top` or `bottom`
+			// 	position: "right", // `left`, `center` or `right`
+			// 	stopOnFocus: true, // Prevents dismissing of toast on hover
+			// 	style: {
+			// 		background:
+			// 			"linear-gradient(to right, rgb(255, 95, 109), rgb(255, 195, 113))",
+			// 	},
+			// 	onClick: function () {}, // Callback after click
+			// }).showToast();
+			notifyError("Show", "add");
 		}
 	};
 };
