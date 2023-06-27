@@ -19,8 +19,12 @@ function App() {
 			<header
 				className={
 					(pageName === "Home" || pageName === "Shows") && user
-						? "App-header-align-top"
-						: "App-header"
+						? isDarkMode
+							? "App-header-align-top-dark"
+							: "App-header-align-top"
+						: isDarkMode
+							? "App-header-dark"
+							: "App-header"
 				}
 				style={{ height: window.innerHeight }}
 			>

@@ -26,6 +26,20 @@
 	/* color: white; */
 }
 
+.App-header-dark {
+	/* background-color: #282c34; */
+	/* background-color: #b2b3b4; */
+	background-color: #fff;
+	/* min-height: 100vh; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	/* color: white; */
+	filter: invert(1);
+}
+
 .App-header-align-top {
 	/* background-color: #282c34; */
 	/* background-color: #b2b3b4; */
@@ -37,6 +51,20 @@
 	justify-content: left;
 	font-size: calc(10px + 2vmin);
 	/* color: white; */
+}
+
+.App-header-align-top-dark {
+	/* background-color: #282c34; */
+	/* background-color: #b2b3b4; */
+	background-color: #fff;
+	/* min-height: 100vh; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: left;
+	font-size: calc(10px + 2vmin);
+	/* color: white; */
+	filter: invert(1);
 }
 
 .App-link {
