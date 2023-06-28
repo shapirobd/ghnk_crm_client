@@ -40,6 +40,10 @@
 	filter: invert(1);
 }
 
+.App-header-dark .ignoreInvert {
+	filter: invert(1);
+}
+
 .App-header-align-top {
 	/* background-color: #282c34; */
 	/* background-color: #b2b3b4; */
@@ -64,6 +68,10 @@
 	justify-content: left;
 	font-size: calc(10px + 2vmin);
 	/* color: white; */
+	filter: invert(1);
+}
+
+.App-header-align-top-dark .ignoreInvert {
 	filter: invert(1);
 }
 

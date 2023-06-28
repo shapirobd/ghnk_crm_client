@@ -179,7 +179,7 @@ const HomePage = ({ user, setPageName }) => {
 						pageUrlMap[currentTable]
 					}
 					target="_blank"
-					className={classes.url}
+					className={`${classes.url} ignoreInvert`}
 				>
 					Visit the {pageUrlMap[currentTable]} page
 				</a>
