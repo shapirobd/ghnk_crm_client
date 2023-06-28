@@ -144,6 +144,7 @@ export default function AlbumForm({ user, newAlbumValues, setNewAlbumValues }) {
 						color: "white",
 						"&:hover": { backgroundColor: "#49A6FF" },
 					}}
+					className="ignoreInvert"
 				>
 					SUBMIT
 				</Button>

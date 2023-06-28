@@ -23,8 +23,8 @@ function App() {
 							? "App-header-align-top-dark"
 							: "App-header-align-top"
 						: isDarkMode
-							? "App-header-dark"
-							: "App-header"
+						? "App-header-dark"
+						: "App-header"
 				}
 				style={{ height: window.innerHeight }}
 			>
@@ -33,15 +33,12 @@ function App() {
 						pageName={pageName}
 						setPageName={setPageName}
 						user={user}
+						isDarkMode={isDarkMode}
+						setIsDarkMode={setIsDarkMode}
 					/>
 				) : (
 					<LoginRouter />
 				)}
-				<DarkModeToggle
-					onChange={setIsDarkMode}
-					checked={isDarkMode}
-					size={80}
-				/>
 			</header>
 			<ToastContainer />
 		</div>

@@ -237,6 +237,7 @@ const EditShowsForm = ({ venues, venueType, showID }) => {
 						color: "white",
 						"&:hover": { backgroundColor: "#49A6FF" },
 					}}
+					className="ignoreInvert"
 				>
 					SUBMIT
 				</Button>

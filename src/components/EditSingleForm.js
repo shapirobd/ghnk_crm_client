@@ -134,6 +134,7 @@ export default function EditSingleForm({user, singleID}) {
 						color: "white",
 						"&:hover": { backgroundColor: "#49A6FF" },
 					}}
+					className="ignoreInvert"
 				>
 					SUBMIT
 				</Button>

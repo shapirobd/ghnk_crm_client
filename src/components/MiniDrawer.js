@@ -28,6 +28,7 @@ import { logout } from "../actionCreators/userActionCreators";
 import { getVenues } from "../actionCreators/getActionCreators";
 import Router from '../Router'
 import axios from "axios";
+import DarkModeToggle from "react-dark-mode-toggle";
 
 const drawerWidth = 240;
 
@@ -102,7 +103,7 @@ const Drawer = styled(MuiDrawer, {
 	}),
 }));
 
-export default function MiniDrawer({ pageName, setPageName, user }) {
+export default function MiniDrawer({ pageName, setPageName, user, isDarkMode, setIsDarkMode }) {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const theme = useTheme();
@@ -141,7 +142,7 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 	return (
 		<Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
 			<CssBaseline />
-			<AppBar position="fixed" open={open}>
+			<AppBar position="fixed" open={open} className="ignoreInvert" sx={{transitionDuration: '0.3s !important'}}>
 				<Toolbar>
 					<IconButton
 						color="inherit"
@@ -160,8 +161,18 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 					</Typography>
 				</Toolbar>
 			</AppBar>
-			<Drawer variant="permanent" open={open} sx={{ display: window.innerWidth < 760 && !open ? "none" : "block" }}>
+			<Drawer
+				variant="permanent"
+				open={open}
+				sx={{ display: window.innerWidth < 760 && !open ? "none" : "block" }}
+			>
 				<DrawerHeader>
+					<DarkModeToggle
+						onChange={setIsDarkMode}
+						checked={isDarkMode}
+						size={80}
+						className="ignoreInvert darkModeToggle"
+					/>
 					<IconButton onClick={handleDrawerClose}>
 						{theme.direction === "rtl" ? (
 							<ChevronRightIcon />
@@ -171,7 +182,7 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 					</IconButton>
 				</DrawerHeader>
 				<Divider />
-				{user.is_admin &&
+				{user.is_admin && (
 					<>
 						<List>
 							{["Home", "Shows", "Music"].map((text, index) => (
@@ -186,7 +197,7 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 										if (window.innerWidth < 760) {
 											handleDrawerClose();
 										}
-										setPageName(text); 
+										setPageName(text);
 										navigate(pathMap[text]);
 									}}
 								>
@@ -207,7 +218,7 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 						</List>
 						<Divider />
 					</>
-				}
+				)}
 				<List>
 					{["Logout"].map((text, index) => (
 						<ListItemButton
@@ -215,7 +226,7 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 							sx={{
 								minHeight: 48,
 								justifyContent: open ? "initial" : "center",
-								px: 2.5
+								px: 2.5,
 							}}
 							onClick={(e) => handleLogout(e)}
 						>
@@ -224,12 +235,15 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 									minWidth: 0,
 									mr: open ? 3 : "auto",
 									justifyContent: "center",
-									color: "red"
+									color: "red",
 								}}
 							>
 								{index === 0 && <LogoutIcon />}
 							</ListItemIcon>
-							<ListItemText primary={text} sx={{ opacity: open ? 1 : 0, color: "red" }} />
+							<ListItemText
+								primary={text}
+								sx={{ opacity: open ? 1 : 0, color: "red" }}
+							/>
 						</ListItemButton>
 					))}
 				</List>
@@ -246,19 +260,29 @@ export default function MiniDrawer({ pageName, setPageName, user }) {
 				}}
 			>
 				{/* {pageMap[pageName]} */}
-			{user.is_admin ?
-				<Router user={user} venues={venues} pageName={pageName} setPageName={setPageName}/>
-					:
-				<div style={{ 
-							width: window.innerWidth < 760 ? "100%" : "50%", 
-							height: "90vh", 
+				{user.is_admin ? (
+					<Router
+						user={user}
+						venues={venues}
+						pageName={pageName}
+						setPageName={setPageName}
+					/>
+				) : (
+					<div
+						style={{
+							width: window.innerWidth < 760 ? "100%" : "50%",
+							height: "90vh",
 							display: "flex",
 							flexDirection: "column",
 							justifyContent: "center",
-							alignItems: "center" }}>
-					<Typography variant="h6">You must be an admin to have read/write access to this content.</Typography>
-				</div>
-			}
+							alignItems: "center",
+						}}
+					>
+						<Typography variant="h6">
+							You must be an admin to have read/write access to this content.
+						</Typography>
+					</div>
+				)}
 			</Box>
 		</Box>
 	);

@@ -219,6 +219,7 @@ export default function ShowsForm({ venues, venueType }) {
 						color: "white",
 						"&:hover": { backgroundColor: "#49A6FF" },
 					}}
+					className="ignoreInvert"
 				>
 					SUBMIT
 				</Button>

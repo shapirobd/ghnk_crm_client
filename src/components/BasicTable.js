@@ -101,7 +101,7 @@ const BasicTable = ({
 				deletedIdSetter={deletedIdSetter}
 			/>
 			<Table sx={{ minWidth: 650 }} aria-label="simple table">
-				<TableHead>
+				<TableHead className="ignoreInvert" sx={{ transitionDuration: '0.01s !important' }}>
 					<TableRow sx={{ backgroundColor: "#1976D2" }}>
 						{cols.map((col) => (
 							<TableCell
@@ -126,7 +126,7 @@ const BasicTable = ({
 							{cols.map((col) => (
 								<TableCell key={category + "_" + col} align="left">
 									{anchorTagColumns.includes(colMap[col]) ? (
-										<a href={row[colMap[col]]} className={classes.url}>
+										<a href={row[colMap[col]]} className={`${classes.url} ignoreInvert url`}>
 											{row[colMap[col]]}
 										</a>
 									) : boldTagColumns.includes(colMap[col]) ? (
@@ -147,7 +147,7 @@ const BasicTable = ({
 										}
 									}}
 								>
-									<DeleteIcon sx={{ color: "red" }} />
+									<DeleteIcon sx={{ color: "red", transitionDuration: "0.3s" }} className="ignoreInvert"/>
 								</IconButton>
 							</TableCell>
 							<TableCell align="left">

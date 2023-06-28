@@ -3,7 +3,8 @@ import { makeStyles } from "@mui/styles";
 export const useStyles = makeStyles(() => ({
 	url: {
     marginBottom: "5%",
-		transitionDuration: "0.2s",
+		// transitionDuration: "0.03s",
+		// transitionDelay: "0.02s",
 		textDecoration: "none",
 		color: "white",
 		backgroundColor: "#3B3",
