@@ -22,7 +22,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 const showCols = ["Venue", "Other Artists", "Date", "Time", "Ticket Link", "Solo Show"];
 const albumCols = ["Name", "URL", "Code"];
-const singleCols = ["Name", "URL", "Code"];
+const singleCols = ["Name", "URL", "Code", "Display Order", "Show On Site"];
 
 const colMap = {
 	Name: "name",
