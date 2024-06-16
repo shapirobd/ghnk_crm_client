@@ -33,6 +33,8 @@ const colMap = {
 	Time: "time",
 	"Ticket Link": "ticket_link",
 	"Solo Show": "is_solo",
+	"Display Order": "display_order",
+	"Show On Site": "show_on_site"
 };
 
 const pageUrlMap = {
