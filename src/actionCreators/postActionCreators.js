@@ -3,7 +3,7 @@
 
 import axios from "axios";
 import {
-	ADD_SHOW, ADD_SINGLE, ADD_ALBUM
+	ADD_SHOW, ADD_SONG, ADD_ALBUM
 } from "../actionTypes";
 import { API_URL } from "../config";
 // import Toastify from "toastify-js";
@@ -30,11 +30,11 @@ export const addAlbum = (data, code, user, setSubmitSuccess) => {
 		}
 	};
 };
-export const addSingle = (data, code, user, setSubmitSuccess) => {
+export const addSong = (data, code, user, setSubmitSuccess) => {
 	return async (dispatch) => {
 		try {
-      console.log("SINGLE DATA: ", data)
-			const resp = await axios.post(API_URL + "/singles", {
+      console.log("SONG DATA: ", data)
+			const resp = await axios.post(API_URL + "/songs", {
 				...data,
 				code,
 				token: user.token,
@@ -42,8 +42,8 @@ export const addSingle = (data, code, user, setSubmitSuccess) => {
 
 			if (resp.data.affectedRows) {
 				setSubmitSuccess(true);
-        dispatch(addedSingle(resp.data));
-				notifySuccess("Single", "add");
+        dispatch(addedSong(resp.data));
+				notifySuccess(data.category || "Single", "add");
 			}
 		} catch (e) {
 			console.error(e);
@@ -118,12 +118,12 @@ const addedShow = (show, showWithVenue) => {
   }
 }
 
-const addedSingle = (single) => {
-  console.log("single", single)
+const addedSong = (song) => {
+  console.log("song", song)
   return {
-    type: ADD_SINGLE,
+    type: ADD_SONG,
     payload: {
-      single
+      song
     }
   }
 }

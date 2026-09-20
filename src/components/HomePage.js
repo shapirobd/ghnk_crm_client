@@ -5,9 +5,9 @@ import BasicTable from "./BasicTable";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {useDispatch, useSelector, shallowEqual} from 'react-redux'
-import { getAlbums, getShowsWithVenues, getShows, getSingles} from "../actionCreators/getActionCreators";
-import { deleteAlbum, deleteShow, deleteSingle} from "../actionCreators/deleteActionCreators";
-import { updateAlbum, updateShow, updateSingle} from "../actionCreators/patchActionCreators";
+import { getAlbums, getShowsWithVenues, getShows, getSongs} from "../actionCreators/getActionCreators";
+import { deleteAlbum, deleteShow, deleteSong} from "../actionCreators/deleteActionCreators";
+import { updateAlbum, updateShow, updateSong} from "../actionCreators/patchActionCreators";
 import { API_URL } from "../config";
 import { useStyles } from './HomePageStyles';
 
@@ -22,7 +22,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 const showCols = ["Venue", "Other Artists", "Date", "Time", "Ticket Link", "Solo Show"];
 const albumCols = ["Name", "URL", "Code"];
-const singleCols = ["Name", "URL", "Code", "Display Order", "Show On Site"];
+const songCols = ["Name", "URL", "Code", "Display Order", "Show On Site"];
 
 const colMap = {
 	Name: "name",
@@ -41,6 +41,7 @@ const pageUrlMap = {
 	"Shows": "shows",
 	"Albums": "music",
 	"Singles": "music",
+	"New Releases": "music",
 }
 
 const HomePage = ({ user, setPageName }) => {
@@ -56,10 +57,12 @@ const HomePage = ({ user, setPageName }) => {
 
 	const shows = useSelector((state) => state.showsWithVenues, shallowEqual)
 	const albums = useSelector((state) => state.albums, shallowEqual)
-	const singles = useSelector((state) => state.singles, shallowEqual)
+	const songs = useSelector((state) => state.songs, shallowEqual)
+	const singles = songs.filter((song) => (song.category || "Single") === "Single")
+	const newReleases = songs.filter((song) => song.category === "New Release")
 
 	const [deletedAlbumID, setDeletedAlbumID] = useState(0);
-	const [deletedSingleID, setDeletedSingleID] = useState(0);
+	const [deletedSongID, setDeletedSongID] = useState(0);
 	const [deletedShowID, setDeletedShowID] = useState(0);
 
 	// const getAlbums = async () => {
@@ -99,12 +102,12 @@ const HomePage = ({ user, setPageName }) => {
 	}, [deletedShowID]);
 
 	useEffect(() => {
-		if (deletedSingleID) {
-			console.log("deletedAlbumID: ", deletedSingleID);
-			dispatch(getSingles());
-			setDeletedSingleID(0);
+		if (deletedSongID) {
+			console.log("deletedSongID: ", deletedSongID);
+			dispatch(getSongs());
+			setDeletedSongID(0);
 		}
-	}, [deletedAlbumID]);
+	}, [deletedSongID]);
 
 	// ##################################
 	// ######## DELETE FUNCTIONS ########
@@ -128,12 +131,12 @@ const HomePage = ({ user, setPageName }) => {
 	// 	setDeletedAlbumID(albumID);
 	// };
 
-	// const deleteSingle = async (singleID) => {
-	// 	axios.delete(API_URL + "/singles").send({
+	// const deleteSong = async (songID) => {
+	// 	axios.delete(API_URL + "/songs").send({
 	// 		token: user.token,
-	// 		singleID,
+	// 		songID,
 	// 	});
-	// 	setDeletedSingleID(singleID);
+	// 	setDeletedSongID(songID);
 	// };
 
 	// ##################################
@@ -151,14 +154,14 @@ const HomePage = ({ user, setPageName }) => {
 		navigate("/music?albumID=" + albumID);
 	};
 
-	const editSingle = async (singleID) => {
+	const editSong = async (songID) => {
 		setPageName("Music");
-		navigate("/music?singleID=" + singleID);
+		navigate("/music?songID=" + songID);
 	};
 
 	useEffect(() => {
 		dispatch(getAlbums());
-		dispatch(getSingles());
+		dispatch(getSongs());
 		dispatch(getShows());
 		dispatch(getShowsWithVenues());
 	}, []);
@@ -251,6 +254,23 @@ const HomePage = ({ user, setPageName }) => {
 				>
 					Singles
 				</ListItem>
+				<Divider
+					orientation="vertical"
+					flexItem
+					sx={{ marginLeft: "0px !important", marginRight: "0px !important" }}
+				/>
+				<ListItem
+					button
+					onClick={() => setCurrentTable("New Releases")}
+					sx={{
+						display: "flex",
+						justifyContent: "center",
+						backgroundColor: currentTable === "New Releases" ? "#eee" : "white",
+						fontSize: "18px",
+					}}
+				>
+					New Releases
+				</ListItem>
 			</List>
 			{/* <DrawerHeader /> */}
 			{currentTable === "Shows" &&
@@ -300,14 +320,14 @@ const HomePage = ({ user, setPageName }) => {
 			{currentTable === "Singles" &&
 				(singles.length ? (
 					<BasicTable
-						cols={singleCols}
+						cols={songCols}
 						data={singles}
 						colMap={colMap}
-						deleteFunction={deleteSingle}
-						editFunction={editSingle}
+						deleteFunction={deleteSong}
+						editFunction={editSong}
 						category="singles"
 						user={user}
-						deletedIdSetter={setDeletedSingleID}
+						deletedIdSetter={setDeletedSongID}
 					/>
 				) : (
 					<div className={classes.emptyList}>
@@ -315,7 +335,29 @@ const HomePage = ({ user, setPageName }) => {
 							variant="h6"
 							sx={{ color: "grey", fontWeight: "bolder" }}
 						>
-							There are no albums at this time.
+							There are no singles at this time.
+						</Typography>
+					</div>
+				))}
+			{currentTable === "New Releases" &&
+				(newReleases.length ? (
+					<BasicTable
+						cols={songCols}
+						data={newReleases}
+						colMap={colMap}
+						deleteFunction={deleteSong}
+						editFunction={editSong}
+						category="new-releases"
+						user={user}
+						deletedIdSetter={setDeletedSongID}
+					/>
+				) : (
+					<div className={classes.emptyList}>
+						<Typography
+							variant="h6"
+							sx={{ color: "grey", fontWeight: "bolder" }}
+						>
+							There are no new releases at this time.
 						</Typography>
 					</div>
 				))}

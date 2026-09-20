@@ -1,5 +1,5 @@
 import axios from "axios";
-import { UPDATE_SHOW, UPDATE_SINGLE, UPDATE_ALBUM } from "../actionTypes";
+import { UPDATE_SHOW, UPDATE_SONG, UPDATE_ALBUM } from "../actionTypes";
 import { API_URL } from "../config";
 // import Toastify from "toastify-js";
 // import "toastify-js/src/toastify.css";
@@ -57,12 +57,12 @@ export const updateAlbum = (albumID, data, code, user, setSubmitSuccess) => {
 		}
 	};
 };
-export const updateSingle = (singleID, data, code, user, setSubmitSuccess) => {
+export const updateSong = (songID, data, code, user, setSubmitSuccess) => {
 	return async (dispatch) => {
 		try {
-			console.log("SINGLE DATA: ", data);
+			console.log("SONG DATA: ", data);
 			const resp = await axios.patch(
-				API_URL + "/singles?singleID=" + singleID,
+				API_URL + "/songs?songID=" + songID,
 				{
 					...data,
 					code,
@@ -70,10 +70,10 @@ export const updateSingle = (singleID, data, code, user, setSubmitSuccess) => {
 				}
 			);
 
-			const singles = await axios.get(API_URL + "/singles");
+			const songs = await axios.get(API_URL + "/songs");
 			setSubmitSuccess(true);
-			dispatch(singleUpdated(singles));
-			notifySuccess("Single", "update");
+			dispatch(songUpdated(songs));
+			notifySuccess(data.category || "Single", "update");
 		} catch (e) {
 			console.error(e);
 			notifyError(e.response.data.message);
@@ -99,11 +99,11 @@ const albumUpdated = (albums) => {
 		},
 	};
 };
-const singleUpdated = (singles) => {
+const songUpdated = (songs) => {
 	return {
-		type: UPDATE_SINGLE,
+		type: UPDATE_SONG,
 		payload: {
-			singles,
+			songs,
 		},
 	};
 };

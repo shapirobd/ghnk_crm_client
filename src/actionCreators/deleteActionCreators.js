@@ -3,7 +3,7 @@ import {
 	DELETE_SHOW,
 	DELETE_SHOWS_WITH_VENUE,
 	DELETE_ALBUM,
-	DELETE_SINGLE,
+	DELETE_SONG,
 } from "../actionTypes";
 import { API_URL } from '../config';
 // import Toastify from "toastify-js";
@@ -49,20 +49,20 @@ export const deleteShow = (user, showID, setDeletedShowID, setPreviousShow = fal
 	};
 };
 
-export const deleteSingle = (user, singleID, setDeletedSingleID) => {
-  console.log(singleID)
-  console.log("inside delete single")
+export const deleteSong = (user, songID, setDeletedSongID) => {
+  console.log(songID)
+  console.log("inside delete song")
 	return async (dispatch) => {
 		try {
-			axios.delete(API_URL + "/singles", {
+			axios.delete(API_URL + "/songs", {
 				token: user.token,
 				data: {
-					singleID
+					songID
 				},
 			});
-			dispatch(deletedSingle(singleID));
-			setDeletedSingleID(singleID);
-			notifySuccess("Single", "delete");
+			dispatch(deletedSong(songID));
+			setDeletedSongID(songID);
+			notifySuccess("Song", "delete");
 		} catch (e) {
 			console.error(e);
 			notifyError(e.response.data.message);
@@ -86,12 +86,12 @@ const deletedShow = (showID) => {
 		},
 	};
 };
-const deletedSingle = (singleID) => {
-	console.log("inside deletedSingle!")
+const deletedSong = (songID) => {
+	console.log("inside deletedSong!")
 	return {
-		type: DELETE_SINGLE,
+		type: DELETE_SONG,
 		payload: {
-			singleID,
+			songID,
 		},
 	};
 };

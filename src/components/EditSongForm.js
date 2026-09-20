@@ -4,6 +4,8 @@ import {
 	InputLabel,
 	FormControl,
 	OutlinedInput,
+	Select,
+	MenuItem,
 	Button,
 	Typography,
 } from "@mui/material";
@@ -14,37 +16,38 @@ import axios from "axios";
 import jQuery from "jquery";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { updateSingle } from "../actionCreators/patchActionCreators";
+import { updateSong } from "../actionCreators/patchActionCreators";
 
-export default function EditSingleForm({user, singleID}) {
+export default function EditSongForm({user, songID}) {
   const navigate = useNavigate();
 	const dispatch = useDispatch();
-  const singles = useSelector((state) => state.singles);
+  const songs = useSelector((state) => state.songs);
 
-  const initialSingleData = singles.filter((single) => single.id == singleID)[0];
+  const initialSongData = songs.filter((song) => song.id == songID)[0];
 
-  const [singleValues, setSingleValues] = useState({
-		name: initialSingleData.name,
-		url: initialSingleData.url,
+  const [songValues, setSongValues] = useState({
+		name: initialSongData.name,
+		url: initialSongData.url,
+		category: initialSongData.category || "Single",
 	});
 
   const [missingFields, setMissingFields] = useState([]);
 	const [submitSuccess, setSubmitSuccess] = useState(false);
 
-	const handleSingleChange = (e, key) => {
+	const handleSongChange = (e, key) => {
 		let newValue = e.target.value;
-		setSingleValues({ ...singleValues, [key]: newValue });
+		setSongValues({ ...songValues, [key]: newValue });
 	};
 
 	const findMissingFields = () => {
 		const emptyFields = [];
-		if (singleValues.name === "") emptyFields.push("name");
-		if (singleValues.url === "") emptyFields.push("url");
+		if (songValues.name === "") emptyFields.push("name");
+		if (songValues.url === "") emptyFields.push("url");
 
 		return emptyFields;
 	};
 
-	async function submitSingle(data) {
+	async function submitSong(data) {
 		let isCodePresent = data.url.indexOf("track/") > -1;
 		if (!isCodePresent) {
 			return;
@@ -55,7 +58,7 @@ export default function EditSingleForm({user, singleID}) {
 			data.url.indexOf("?")
 		);
 
-		dispatch(updateSingle(singleID, data, code, user, setSubmitSuccess));
+		dispatch(updateSong(songID, data, code, user, setSubmitSuccess));
 	}
 
 	const handleSubmit = (e) => {
@@ -64,8 +67,8 @@ export default function EditSingleForm({user, singleID}) {
 		setMissingFields(missingFieldsFound);
 
 		if (!missingFieldsFound.length) {
-			const data = { ...singleValues };
-			submitSingle(data);
+			const data = { ...songValues };
+			submitSong(data);
 		}
 
 		console.log("missingFieldsFound: ", missingFieldsFound);
@@ -91,20 +94,20 @@ export default function EditSingleForm({user, singleID}) {
 			}}
 		>
 			<FormControl fullWidth sx={{ m: 1 }} variant="outlined">
-				<InputLabel htmlFor="name">Single Name</InputLabel>
+				<InputLabel htmlFor="name">Song Name</InputLabel>
 				<OutlinedInput
 					id="name"
 					// type="time"
-					value={singleValues.name}
-					onChange={(e) => handleSingleChange(e, "name")}
-					label="Single Name"
+					value={songValues.name}
+					onChange={(e) => handleSongChange(e, "name")}
+					label="Song Name"
 				/>
 				{missingFields.includes("name") && (
 					<Typography
 						variant="caption"
 						sx={{ color: "red", textAlign: "left" }}
 					>
-						Single Name is required
+						Song Name is required
 					</Typography>
 				)}
 			</FormControl>
@@ -113,8 +116,8 @@ export default function EditSingleForm({user, singleID}) {
 				<OutlinedInput
 					id="url"
 					// type="date"
-					value={singleValues.url}
-					onChange={(e) => handleSingleChange(e, "url")}
+					value={songValues.url}
+					onChange={(e) => handleSongChange(e, "url")}
 					label="URL"
 				/>
 				{missingFields.includes("url") && (
@@ -125,6 +128,19 @@ export default function EditSingleForm({user, singleID}) {
 						URL is required
 					</Typography>
 				)}
+			</FormControl>
+			<FormControl fullWidth sx={{ m: 1 }} variant="outlined">
+				<InputLabel id="category-label">Category</InputLabel>
+				<Select
+					labelId="category-label"
+					id="category"
+					value={songValues.category}
+					onChange={(e) => handleSongChange(e, "category")}
+					label="Category"
+				>
+					<MenuItem value="Single">Single</MenuItem>
+					<MenuItem value="New Release">New Release</MenuItem>
+				</Select>
 			</FormControl>
 			<FormControl fullWidth sx={{ m: 1 }}>
 				<Button

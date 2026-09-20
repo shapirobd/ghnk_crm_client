@@ -13,13 +13,14 @@ import {
 import axios from "axios";
 import jQuery from "jquery";
 import { useDispatch } from "react-redux";
-import { addSingle } from '../actionCreators/postActionCreators';
+import { addSong } from '../actionCreators/postActionCreators';
 import { API_URL } from "../config";
 
-export default function SingleForm({
+export default function SongForm({
 	user,
-	newSingleValues,
-	setNewSingleValues
+	category = "Single",
+	newSongValues,
+	setNewSongValues
 }) {
 	// const user = useSelector((state) => state.user);
 	// const theme = createTheme(Theme);
@@ -28,20 +29,20 @@ export default function SingleForm({
 	const [missingFields, setMissingFields] = useState([]);
 	const [submitSuccess, setSubmitSuccess] = useState(false);
 
-	const handleSingleChange = (e, key) => {
+	const handleSongChange = (e, key) => {
 		let newValue = e.target.value;
-		setNewSingleValues({ ...newSingleValues, [key]: newValue });
+		setNewSongValues({ ...newSongValues, [key]: newValue });
 	};
 
 	const findMissingFields = () => {
 		const emptyFields = [];
-		if (newSingleValues.name === "") emptyFields.push("name");
-		if (newSingleValues.url === "") emptyFields.push("url");
+		if (newSongValues.name === "") emptyFields.push("name");
+		if (newSongValues.url === "") emptyFields.push("url");
 
 		return emptyFields;
 	};
 
-	async function submitSingle(data) {
+	async function submitSong(data) {
 		let isCodePresent = data.url.indexOf("track/") > -1;
 		if (!isCodePresent) {
 			return;
@@ -52,16 +53,7 @@ export default function SingleForm({
 			data.url.indexOf("?")
 		);
 
-		// const resp = await axios.post(API_URL + "/singles", {
-		// 	...data,
-		// 	code,
-		// 	token: user.token,
-		// });
-
-		// if (resp.data.affectedRows) {
-		// 	setSubmitSuccess(true);
-		// }
-		dispatch(addSingle(data, code, user, setSubmitSuccess));
+		dispatch(addSong(data, code, user, setSubmitSuccess));
 	}
 
 	const handleSubmit = (e) => {
@@ -70,8 +62,8 @@ export default function SingleForm({
 		setMissingFields(missingFieldsFound);
 
 		if (!missingFieldsFound.length) {
-			const data = { ...newSingleValues };
-			submitSingle(data);
+			const data = { ...newSongValues, category };
+			submitSong(data);
 		}
 
 		console.log("missingFieldsFound: ", missingFieldsFound);
@@ -83,7 +75,7 @@ export default function SingleForm({
 			console.log("Success!!");
 			jQuery(".App-header").append(`
         <div class="success-message transparent">
-          Single Submitted
+          ${category} Submitted
         </div>`);
 			jQuery(".success-message").removeClass("transparent");
 			jQuery(".success-message").addClass("not-transparent");
@@ -106,20 +98,20 @@ export default function SingleForm({
 			}}
 		>
 			<FormControl fullWidth sx={{ m: 1 }} variant="outlined">
-				<InputLabel htmlFor="name">Single Name</InputLabel>
+				<InputLabel htmlFor="name">{category} Name</InputLabel>
 				<OutlinedInput
 					id="name"
 					// type="time"
-					value={newSingleValues.name}
-					onChange={(e) => handleSingleChange(e, "name")}
-					label="Single Name"
+					value={newSongValues.name}
+					onChange={(e) => handleSongChange(e, "name")}
+					label={`${category} Name`}
 				/>
 				{missingFields.includes("name") && (
 					<Typography
 						variant="caption"
 						sx={{ color: "red", textAlign: "left" }}
 					>
-						Single Name is required
+						{category} Name is required
 					</Typography>
 				)}
 			</FormControl>
@@ -128,8 +120,8 @@ export default function SingleForm({
 				<OutlinedInput
 					id="url"
 					// type="date"
-					value={newSingleValues.url}
-					onChange={(e) => handleSingleChange(e, "url")}
+					value={newSongValues.url}
+					onChange={(e) => handleSongChange(e, "url")}
 					label="URL"
 				/>
 				{missingFields.includes("url") && (

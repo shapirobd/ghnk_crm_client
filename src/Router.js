@@ -18,10 +18,10 @@ const Router = ({ mobile, user, venues, pageName, setPageName }) => {
   console.log("query: ", query)
 	let showID = query.get("showID");
 	let albumID = query.get("albumID");
-	let singleID = query.get("singleID");
+	let songID = query.get("songID");
   console.log("showID: ", showID)
   console.log("albumID: ", albumID);
-  console.log("singleID: ", singleID);
+  console.log("songID: ", songID);
 	
 	// useEffect(() => {
 	// 	navigate(pathMap[pageName]);
@@ -47,7 +47,7 @@ const Router = ({ mobile, user, venues, pageName, setPageName }) => {
 			<Route
 				exact
 				path="/music"
-				element={<MusicPage albumID={albumID} singleID={singleID} />}
+				element={<MusicPage albumID={albumID} songID={songID} />}
 			/>
 		</Routes>
 	);

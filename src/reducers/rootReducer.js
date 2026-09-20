@@ -3,7 +3,7 @@ const INITIAL_STATE = {
 	user: null,
 	shows: [],
 	albums: [],
-	singles: [],
+	songs: [],
 	showsWithVenues: []
 };
 
@@ -40,12 +40,12 @@ const rootReducer = (state = INITIAL_STATE, action) => {
 				shows,
 			};
 		}
-		case "LOAD_SINGLES": {
-			const { singles } = action.payload;
-			console.log("SINGLES LOADED: ", singles);
+		case "LOAD_SONGS": {
+			const { songs } = action.payload;
+			console.log("SONGS LOADED: ", songs);
 			return {
 				...state,
-				singles,
+				songs,
 			};
 		}
 		case "LOAD_ALBUMS": {
@@ -74,12 +74,12 @@ const rootReducer = (state = INITIAL_STATE, action) => {
 				albums: [...state.albums, album],
 			};
 		}
-		case "ADD_SINGLE": {
-			const { single } = action.payload;
-			console.log("SINGLE ADDED: ", single);
+		case "ADD_SONG": {
+			const { song } = action.payload;
+			console.log("SONG ADDED: ", song);
 			return {
 				...state,
-				singles: [...state.singles, single],
+				songs: [...state.songs, song],
 			};
 		}
 		case "DELETE_SHOW": {
@@ -102,12 +102,12 @@ const rootReducer = (state = INITIAL_STATE, action) => {
 				albums: state.albums.filter((album) => album.id !== albumID),
 			};
 		}
-		case "DELETE_SINGLE": {
-			const { singleID } = action.payload;
-			console.log("SINGLE DELETED: ", singleID);
+		case "DELETE_SONG": {
+			const { songID } = action.payload;
+			console.log("SONG DELETED: ", songID);
 			return {
 				...state,
-				singles: state.singles.filter((single) => single.id !== singleID),
+				songs: state.songs.filter((song) => song.id !== songID),
 			};
 		}
 		case "UPDATE_SHOW": {
@@ -120,12 +120,12 @@ const rootReducer = (state = INITIAL_STATE, action) => {
 				showsWithVenues: showsWithVenues,
 			};
 		}
-		case "UPDATE_SINGLE": {
-			const { singles } = action.payload;
-			console.log("SINGLES: ", singles);
+		case "UPDATE_SONG": {
+			const { songs } = action.payload;
+			console.log("SONGS: ", songs);
 			return {
 				...state,
-				singles: singles,
+				songs: songs,
 			};
 		}
 		case "UPDATE_ALBUM": {

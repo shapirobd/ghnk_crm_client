@@ -6,9 +6,9 @@ import {
 	Divider,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import SingleForm from "./SingleForm";
+import SongForm from "./SongForm";
 import AlbumForm from "./AlbumForm";
-import EditSingleForm from "./EditSingleForm";
+import EditSongForm from "./EditSongForm";
 import EditAlbumForm from "./EditAlbumForm";
 import { useSelector } from "react-redux";
 
@@ -21,10 +21,10 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 	...theme.mixins.toolbar,
 }));
 
-const MusicPage = ({albumID, singleID}) => {
+const MusicPage = ({albumID, songID}) => {
 	const user = useSelector((state) => state.user);
 	const [venueType, setVenueType] = useState("Add Single");
-	const [newSingleValues, setNewSingleValues] = useState({
+	const [newSongValues, setNewSongValues] = useState({
 		name: "",
 		url: "",
 	});
@@ -37,8 +37,8 @@ const MusicPage = ({albumID, singleID}) => {
 			<DrawerHeader />
 			<Typography variant="h3" sx={{ marginBottom: "30px" }}>
 				{albumID && "Edit Album"}
-				{singleID && "Edit Single"}
-				{!albumID && !singleID ? "Add Music" : ""}
+				{songID && "Edit Song"}
+				{!albumID && !songID ? "Add Music" : ""}
 			</Typography>
 			<div
 				style={{
@@ -48,7 +48,7 @@ const MusicPage = ({albumID, singleID}) => {
 					alignItems: "center",
 				}}
 			>
-				{!albumID && !singleID && (
+				{!albumID && !songID && (
 					<List
 						sx={{
 							display: "flex",
@@ -90,6 +90,26 @@ const MusicPage = ({albumID, singleID}) => {
 						/>
 						<ListItem
 							button
+							onClick={() => setVenueType("Add New Release")}
+							sx={{
+								display: "flex",
+								justifyContent: "center",
+								backgroundColor: venueType === "Add New Release" ? "#eee" : "white",
+								fontSize: "18px",
+							}}
+						>
+							Add New Release
+						</ListItem>
+						<Divider
+							orientation="vertical"
+							flexItem
+							sx={{
+								marginLeft: "0px !important",
+								marginRight: "0px !important",
+							}}
+						/>
+						<ListItem
+							button
 							onClick={() => setVenueType("Add Album")}
 							sx={{
 								display: "flex",
@@ -102,24 +122,25 @@ const MusicPage = ({albumID, singleID}) => {
 						</ListItem>
 					</List>
 				)}
-				{!singleID && !albumID ? (
-					venueType === "Add Single" ? (
-						<SingleForm
-							user={user}
-							newSingleValues={newSingleValues}
-							setNewSingleValues={setNewSingleValues}
-						/>
-					) : (
+				{!songID && !albumID ? (
+					venueType === "Add Album" ? (
 						<AlbumForm
 							user={user}
 							newAlbumValues={newAlbumValues}
 							setNewAlbumValues={setNewAlbumValues}
 						/>
+					) : (
+						<SongForm
+							user={user}
+							category={venueType === "Add New Release" ? "New Release" : "Single"}
+							newSongValues={newSongValues}
+							setNewSongValues={setNewSongValues}
+						/>
 					)
-				) : singleID ? (
-					<EditSingleForm
+				) : songID ? (
+					<EditSongForm
 						user={user}
-						singleID={singleID}
+						songID={songID}
 					/>
 				) : (
 					<EditAlbumForm

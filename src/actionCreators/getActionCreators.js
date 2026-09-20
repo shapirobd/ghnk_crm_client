@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOAD_SHOWS, LOAD_SHOWS_WITH_VENUES, LOAD_SINGLES, LOAD_ALBUMS, LOAD_VENUES } from "../actionTypes";
+import { LOAD_SHOWS, LOAD_SHOWS_WITH_VENUES, LOAD_SONGS, LOAD_ALBUMS, LOAD_VENUES } from "../actionTypes";
 import { API_URL } from "../config";
 
 export const getAlbums = () => {
@@ -13,11 +13,11 @@ export const getAlbums = () => {
   };
 };
 
-export const getSingles = () => {
+export const getSongs = () => {
   return async (dispatch) => {
     try {
-  	  const resp = await axios.get(API_URL + "/singles");
-  	  dispatch(gotSingles(resp.data));
+  	  const resp = await axios.get(API_URL + "/songs");
+  	  dispatch(gotSongs(resp.data));
     } catch (e) {
       console.error(e)
     }
@@ -69,11 +69,11 @@ const gotAlbums = (albums) => {
 	};
 };
 
-const gotSingles = (singles) => {
+const gotSongs = (songs) => {
 	return {
-		type: LOAD_SINGLES,
+		type: LOAD_SONGS,
 		payload: {
-			singles,
+			songs,
 		},
 	};
 };
